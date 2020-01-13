@@ -1,0 +1,16 @@
+
+<input #miniature type="file" accept="image/png, image/jpeg">
+<input #modele placeholder="Saisir modèle" class="form-control mb-4">
+<input #agence placeholder="Saisir agence" class="form-control mb-4">
+<input #statut placeholder="Saisir statut" class="form-control mb-4">
+<input #dateDebStatut type="date" placeholder="Saisir la date de début du statut" class="form-control mb-4">
+<input #dateFinStatut type="date" placeholder="Saisir la date de fin du statut" class="form-control mb-4">
+<input #puissance placeholder="Saisir la puissance" class="form-control mb-4">
+<input #largeur placeholder="Saisir la largeur" class="form-control mb-4">
+<input #longueur placeholder="Saisir la longueur" class="form-control mb-4">
+<input #dateFab type="date" placeholder="Saisir la date de fabrication" class="form-control mb-4">
+<button 
+    mdbBtn color="info" block="true" class="my-4"
+    (click)="addVehicule(miniature.value,modele.value,agence.value,statut.value,dateDebStatut.value,dateFinStatut.value,
+    puissance.value, largeur.value, longueur.value, dateFab.value)">Ajouter un véhicule
+</button>
