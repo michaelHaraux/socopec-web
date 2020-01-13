@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { HTTPNODESERVICEService } from 'D:/RIL/Projet Web - Alexandre DE BEUKELAER/Projet Angular/SOCOPEC/src/app/http-node-service.service';
-import { LISTEVEHICULESComponent } from 'D:/RIL/Projet Web - Alexandre DE BEUKELAER/Projet Angular/SOCOPEC/src/app/liste-vehicules/liste-vehicules.component';
+import { HTTPNODESERVICEService } from '../http-node-service.service';
+import { LISTEVEHICULESComponent } from '../liste-vehicules/liste-vehicules.component';
 @Component({
   selector: 'app-ajout-vehicule',
   templateUrl: './ajout-vehicule.component.html',

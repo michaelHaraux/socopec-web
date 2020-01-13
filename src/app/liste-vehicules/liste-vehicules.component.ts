@@ -1,5 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { HTTPNODESERVICEService } from 'D:/RIL/Projet Web - Alexandre DE BEUKELAER/Projet Angular/SOCOPEC/src/app/http-node-service.service';
+import { HTTPNODESERVICEService } from '../http-node-service.service';
 //import { VEHICULEComponent } from 'C:/Users/Lucas/Documents/01 CESI/Projet Angular/SOCOPEC/src/app/vehicule/vehicule.component';
 @Component({
   selector: 'app-liste-vehicules',
