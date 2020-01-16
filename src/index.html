@@ -103,17 +103,21 @@
       </div>
     </div>
   </div>
+
   <div id="menu"><mat-menu #appMenu="matMenu" yPosition="above">
   <button mat-menu-item>Accueil</button>
   <button mat-menu-item>Véhicules</button>
-  <button mat-menu-item>Agents</button>
+  <button mat-menu-item routerLink="agents">Agents</button>
   <button mat-menu-item>Agences</button>
 </mat-menu></div>
   
 
   
   <div id="corp">
-    <app-root></app-root>
+    <app-root>
+
+    </app-root>
+
   </div>
   <footer>
     <span>Politique et informations légales</span>
