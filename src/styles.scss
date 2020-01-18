@@ -50,18 +50,52 @@ body {
   max-height:90px;
 }
 
+
 #menu{
     margin-top: 30px;
     margin-right:50px;
-    float: right;
+   float: right;
     
 }
-button {
+ul {
+ padding:0;
+ margin:0;
+ list-style-type:none;
+ }
+li {
+ margin-left:2px;
+ float:left; /*pour IE*/
+
+ }
+ul li a {
+ display:block;
+ float:left;   
+ width:100px;
+ background-color:#6495ED;
+ color:black;
+ text-decoration:none;
+ text-align:center;
+ padding:5px;
+ border:2px solid;
+ /*pour avoir un effet "outset" avec IE :*/
+ border-color:#DCDCDC #696969 #696969 #DCDCDC;
+ }
+ul li a:hover {
+ background-color:#D3D3D3;
+ border-color:#696969 #DCDCDC #DCDCDC #696969;
+ } 
+li
+{
   border-radius: 10px;
   padding-left:10px;
   padding-right:10px;
 }
+#accueil{
+    
+}
+
 #corp {
+  display:block;
   min-width: 100%;
   min-height: 500px;
 }
@@ -72,6 +106,6 @@ footer {
   background-color: #785757;
   padding-left: 20px;
   color: white;
-  position: absolute;
+ // position: absolute;
   bottom: 0;
 }

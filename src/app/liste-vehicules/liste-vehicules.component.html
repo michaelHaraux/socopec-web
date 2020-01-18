@@ -1,47 +1,57 @@
-<h1>VEHICULES</h1>
-<h2>Trié par :</h2>
-<label class="radio-inline">
-    <input type="radio" name="optradio" value="modele" (click)="trierPar('modele')" checked>Modèle
-  </label>
-  <label class="radio-inline">
-    <input type="radio" name="optradio" value="agence">Agence
-  </label>
-  <label class="radio-inline">
-    <input type="radio" name="optradio" value="statut">Statut
-  </label>
-  <label class="radio-inline">
-    <input type="radio" name="optradio" value="puissance">Puissance
-  </label>
-  <label class="radio-inline">
-    <input type="radio" name="optradio" value="supprime">Supprimé
-  </label>
+<div id="acceuil">
 
-  <br><br>
-  <input type="image" alt="Ajout" width="2%" (click)="setAddVehic()"
-  [src]="cheminImage">
-<app-ajout-vehicule *ngIf="addVehic"></app-ajout-vehicule>
-<table *ngIf="hideTable">
-    <thead>
-        <tr>
-            <th scope="col">Identifiant</th>
-            <th scope="col">Miniature</th>
-            <th scope="col">Modèle</th>
-            <th scope="col">Agence</th>
-            <th scope="col">Statut</th>
-            <th scope="col">Supprime</th>
-            <th scope="col">Détail</th>
-        </tr>
-    </thead>
-    <tr (click)="toggleChild(vehicule.id)"
-    *ngFor="let vehicule of VEHICULES">
-        <td>{{ vehicule.id }}</td>
-        <td> <img width="40"  [src]="vehicule.miniature" /> </td>
-        <td>{{ vehicule.modele }}</td>
-        <td>{{ vehicule.agence }}</td>
-        <td>{{ vehicule.statut }}</td>
-        <td>{{ vehicule.supprime }}</td>
-        <td><img width="4%" src="https://c7.uihere.com/files/496/449/244/computer-icons-search-button.jpg"></td>
-    </tr>
-</table>
-<app-vehicule [showMePartially]="showVar" [IDFocus]="IDSelect"></app-vehicule>
+  <br /><br /><br />
+              <h1>VEHICULES</h1>
+              <div>
+                <h2>Trié par :</h2>
+                <label class="radio-inline">
+                  <input type="radio" name="optradio" value="modele" (click)="trierPar('modele')" checked>Modèle
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="optradio" value="agence">Agence
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="optradio" value="statut">Statut
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="optradio" value="puissance">Puissance
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="optradio" value="supprime">Supprimé
+                </label>
+
+                <br><br>
+                <input type="image" alt="Ajout" width="2%" (click)="setAddVehic()"
+                       [src]="cheminImage">
+                <app-ajout-vehicule *ngIf="addVehic"></app-ajout-vehicule>
+                <table *ngIf="hideTable">
+                  <thead>
+                    <tr>
+                      <th scope="col">Identifiant</th>
+                      <th scope="col">Miniature</th>
+                      <th scope="col">Modèle</th>
+                      <th scope="col">Agence</th>
+                      <th scope="col">Statut</th>
+                      <th scope="col">Supprime</th>
+                      <th scope="col">Détail</th>
+                    </tr>
+                  </thead>
+                  <tr (click)="toggleChild(vehicule.id)"
+                      *ngFor="let vehicule of VEHICULES">
+                    <td>{{ vehicule.id }}</td>
+                    <td> <img width="40" [src]="vehicule.miniature" /> </td>
+                    <td>{{ vehicule.modele }}</td>
+                    <td>{{ vehicule.agence }}</td>
+                    <td>{{ vehicule.statut }}</td>
+                    <td>{{ vehicule.supprime }}</td>
+                    <td><img width="4%" src="https://c7.uihere.com/files/496/449/244/computer-icons-search-button.jpg"></td>
+                  </tr>
+                </table>
+                <app-vehicule [showMePartially]="showVar" [IDFocus]="IDSelect"></app-vehicule>
+
+
+
+              </div>
+</div>
+
 

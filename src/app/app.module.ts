@@ -10,6 +10,7 @@ import { LISTEAGENTSComponent } from './liste-agents/liste-agents.component';
 import { LISTEAGENCESComponent } from './liste-agences/liste-agences.component';
 import { AGENCEComponent } from './agence/agence.component';
 import { AjoutVehiculeComponent } from './ajout-vehicule/ajout-vehicule.component';
+import { AccueilComponent } from './accueil/accueil.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +21,13 @@ import { AjoutVehiculeComponent } from './ajout-vehicule/ajout-vehicule.componen
     LISTEAGENTSComponent,
     LISTEAGENCESComponent,
     AGENCEComponent,
-    AjoutVehiculeComponent
+    AjoutVehiculeComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+
   ],
   providers: [HTTPNODESERVICEService],
   bootstrap: [AppComponent]

@@ -1,7 +1,50 @@
 
 
-<app-liste-vehicules>
+<img id="imgG" src="assets/img/imgBanniereGauche.png" alt="Image Gauche">
+<img id="imgD" src="assets/img/imgBanniereDroite.png" alt="Image Droite">
+<div>
+  <div id="banniereHaut">
+    <div id="titre">
+      <h1 id="titreH1">SOCOPEC</h1>
+    </div>
+  </div>
+  <div id="banniereBas">
+    <div id="date">
+      <h1 id="dateH1">
+        <SCRIPT LANGUAGE="JavaScript">
 
-</app-liste-vehicules>
+          AffichageDateConviviale()
+
+        </SCRIPT>
+      </h1>
+    </div>
+  </div>
+
+</div>
+
+<div>
+  <div id="menu" >
+
+    <ul>
+
+      <li routerLinkActive="active"><button routerLink="accueil">Accueil</button></li>
+      <li routerLinkActive="active"><button routerLink="listeVehicules">Listes de Véhicules</button></li>
+      <li routerLinkActive="active"><button routerLink="agents">agents</button></li>
+      <li routerLinkActive="active"><button routerLink="agences">Agences</button></li>
+
+    </ul>
+
+  </div>
+</div>
+
+
+
+<div id="corp">
+  <router-outlet></router-outlet>
+</div>
+<footer>
+  <span>Politique et informations légales</span>
+</footer>
+
 
 
