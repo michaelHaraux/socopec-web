@@ -11,6 +11,8 @@ import { LISTEAGENCESComponent } from './liste-agences/liste-agences.component';
 import { AGENCEComponent } from './agence/agence.component';
 import { AjoutVehiculeComponent } from './ajout-vehicule/ajout-vehicule.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,13 @@ import { AccueilComponent } from './accueil/accueil.component';
     LISTEAGENCESComponent,
     AGENCEComponent,
     AjoutVehiculeComponent,
-    AccueilComponent
+    AccueilComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule
 
   ],
   providers: [HTTPNODESERVICEService],

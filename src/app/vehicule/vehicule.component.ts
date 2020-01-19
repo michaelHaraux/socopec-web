@@ -8,6 +8,7 @@ import { LISTEVEHICULESComponent } from '../liste-vehicules/liste-vehicules.comp
 })
 export class VEHICULEComponent implements OnInit {
 
+
   id:number
   miniature:string
   modele:string
@@ -30,6 +31,9 @@ export class VEHICULEComponent implements OnInit {
 
   ngOnInit()
   {
+    
+
+  
     this.VEHICULES=[];
     console.log(this.VEHICULES);
     console.log(this.idGet);
@@ -43,4 +47,9 @@ export class VEHICULEComponent implements OnInit {
   {
     this.listeVehi.toggleChild(-1)
   }
+
+
+
 }
+
+
