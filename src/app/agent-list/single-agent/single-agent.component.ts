@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Agent } from '../../models/agent.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AgentsService } from '../../services/agents.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-single-agent',
@@ -29,4 +30,6 @@ export class SingleAgentComponent implements OnInit {
   onBack() {
     this.router.navigate(['/agents']);
   }
+
+
 }

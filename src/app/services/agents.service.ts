@@ -64,4 +64,49 @@ export class AgentsService {
     this.emitAgents();
   }
 
+  uploadFile(file: File) {
+    return new Promise(
+      (resolve, reject) => {
+        const almostUniqueFileName = Date.now().toString();
+        const upload = firebase.storage().ref()
+          .child('images/' + almostUniqueFileName + file.name).put(file);
+        upload.on(firebase.storage.TaskEvent.STATE_CHANGED,
+          () => {
+            console.log('Chargement…');
+          },
+          (error) => {
+            console.log('Erreur de chargement ! : ' + error);
+            reject();
+          },
+          () => {
+            resolve(upload.snapshot.ref.getDownloadURL());
+          }
+        );
+      }
+    );
+}
+removeAgent(agent: Agent) {
+  if(agent.photo) {
+    const storageRef = firebase.storage().refFromURL(agent.photo);
+    storageRef.delete().then(
+      () => {
+        console.log('Photo removed!');
+      },
+      (error) => {
+        console.log('Could not remove photo! : ' + error);
+      }
+    );
+  }
+  const agentIndexToRemove = this.agents.findIndex(
+    (agentEl) => {
+      if(agentEl === agent) {
+        return true;
+      }
+    }
+  );
+  this.agents.splice(agentIndexToRemove, 1);
+  this.saveAgents();
+  this.emitAgents();
+}
+
 }
