@@ -6,8 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { VEHICULEComponent } from './vehicule/vehicule.component';
 import { LISTEVEHICULESComponent } from './liste-vehicules/liste-vehicules.component';
-import { AGENTComponent } from './agent/agent.component';
-import { LISTEAGENTSComponent } from './liste-agents/liste-agents.component';
 import { LISTEAGENCESComponent } from './liste-agences/liste-agences.component';
 import { AGENCEComponent } from './agence/agence.component';
 import { AjoutVehiculeComponent } from './ajout-vehicule/ajout-vehicule.component';
@@ -19,6 +17,10 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { HeaderComponent } from './header/header.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
+import { AgentListComponent } from './agent-list/agent-list.component';
+import { SingleAgentComponent } from './agent-list/single-agent/single-agent.component';
+import { AgentFormComponent } from './agent-list/agent-form/agent-form.component';
+import { Subject } from 'rxjs';
 
 
 @NgModule({
@@ -26,15 +28,16 @@ import { AuthGuardService } from './services/auth-guard.service';
     AppComponent,
     VEHICULEComponent,
     LISTEVEHICULESComponent,
-    AGENTComponent,
-    LISTEAGENTSComponent,
     LISTEAGENCESComponent,
     AGENCEComponent,
     AjoutVehiculeComponent,
     AccueilComponent,
     SignupComponent,
     SigninComponent,
-    HeaderComponent
+    HeaderComponent,
+    AgentListComponent,
+    SingleAgentComponent,
+    AgentFormComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,7 @@ import { AuthGuardService } from './services/auth-guard.service';
     HttpClientModule,
     
   ],
-  providers: [HTTPNODESERVICEService,AuthService, AuthGuardService],
+  providers: [HTTPNODESERVICEService,AuthService, AuthGuardService,Subject],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
