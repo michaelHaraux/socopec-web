@@ -1,6 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { HTTPNODESERVICEService } from '../http-node-service.service';
-//import { VEHICULEComponent } from 'C:/Users/Lucas/Documents/01 CESI/Projet Angular/SOCOPEC/src/app/vehicule/vehicule.component';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-liste-vehicules',
   templateUrl: './liste-vehicules.component.html',
@@ -16,10 +17,21 @@ export class LISTEVEHICULESComponent implements OnInit {
   hideTable: boolean = true;
   IDSelect:number;
   cheminImage:string
-  constructor( private HTTPSERV: HTTPNODESERVICEService) 
+  constructor( private HTTPSERV: HTTPNODESERVICEService,private router: Router) 
   {
   }
-    
+ 
+
+  getLogin() {
+    return JSON.parse(localStorage.getItem('user')).login;
+  }
+
+  logout() {
+    console.log('Tentative de déconnexion');
+
+    localStorage.removeItem('user');
+    this.router.navigate(['/login']);
+  }
  
   //Liaison avec la liste des vehicules du service SQL
   ngOnInit()

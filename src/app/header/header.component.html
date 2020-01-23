@@ -1,0 +1,40 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-right">
+        <li routerLinkActive="active" *ngIf="!isAuth">
+          <button type="button" class="btn btn-info" routerLink="auth/signup">Créer un compte</button>
+        </li>
+      </ul>
+     <ul> 
+        <li routerLinkActive="active" *ngIf="!isAuth">
+          <button  type="button" class="btn btn-info" routerLink="auth/signin">Connexion</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-danger" (click)="onSignOut()"
+          style="cursor:pointer"
+          *ngIf="isAuth">Déconnexion</button>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active">
+          <button type="button" class="btn btn-secondary" routerLink="accueil">Accueil</button>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active">
+          <button type="button" class="btn btn-secondary" routerLink="listeVehicules">liste des Vehicules</button>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active">
+          <button type="button" class="btn btn-secondary" routerLink="agents">Agents</button>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active">
+          <button  type="button" class="btn btn-secondary" routerLink="agences">Agences</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  

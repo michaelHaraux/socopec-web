@@ -22,22 +22,7 @@
 
 </div>
 
-<div>
-  <div id="menu" >
-
-    <ul>
-
-      <li routerLinkActive="active"><button  routerLink="accueil" [disabled]="invalidLogin | async">accueil</button></li>
-      <li routerLinkActive="active"><button  routerLink="listeVehicules">Listes de Véhicules</button></li>
-      <li routerLinkActive="active"><button routerLink="agents">agents</button></li>
-      <li routerLinkActive="active"><button routerLink="agences">Agences</button></li>
-
-    </ul>
-
-  </div>
-</div>
-
-
+<app-header></app-header>
 
 <div id="corp">
   <router-outlet></router-outlet>

@@ -4,8 +4,9 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\accueil",
-    "\\src\\app\\liste-vehicules",
-    "\\src\\assets\\img"
+    "\\src\\app\\service",
+    "\\src\\app\\service\\auth"
   ],
+  "SelectedNode": "\\src\\app\\service\\auth\\auth.guard.ts",
   "PreviewInSolutionExplorer": false
 }
