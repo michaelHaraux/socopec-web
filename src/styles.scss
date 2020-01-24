@@ -93,7 +93,7 @@ li
 }
 
 #bienvenue {
-max-width: 100%;
+width: 100%;
 height: auto;
 display: block;
 }
@@ -104,21 +104,37 @@ display: block;
   min-height: 500px;
 }
 
-
+#principale{
+  display : flex;
+  flex-flow: row ;
+}
 .DivCentrale{
-  float: right;
+  margin-left: 30px;
+  width: 100%;
+}
+.DivCentrale button{
+  width: 200px;
+}
+.DivCentrale img{
+  width: 100%;
 }
 .DivGauche{
- 
-width: 300px;
+width: 30%x;
 height: 500px;
-float: left;
 font-family: fantasy;
 font-size: xx-large;
 text-align: center;
 }
+#messageAccueil{
 
+  text-align: center;
+  font-size: x-large;
+  font-weight: bold;
+}
 footer {
+  display: flex;
+  flex-flow: row ;
+  justify-content: space-around;
   max-height: 30px;
   width: 100%;
   background-color: #785757;

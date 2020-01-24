@@ -15,11 +15,13 @@ import { AuthGuardService } from './services/auth-guard.service';
     { path: 'auth/signup', component: SignupComponent },
     { path: 'auth/signin', component: SigninComponent },
     { path: 'agents', canActivate: [AuthGuardService], component: AgentListComponent },
+    { path: 'accueil/agents', canActivate: [AuthGuardService], component: AgentListComponent },
     { path: 'agents/new', canActivate: [AuthGuardService], component: AgentFormComponent },
     { path: 'agents/view/:id', canActivate: [AuthGuardService], component: SingleAgentComponent },
-   
     { path: 'agences', canActivate: [AuthGuardService], component: AGENCEComponent },
+    { path: 'accueil/agences', canActivate: [AuthGuardService], component: AGENCEComponent },
     { path: 'listeVehicules', canActivate: [AuthGuardService], component: LISTEVEHICULESComponent },
+    { path: 'accueil/listeVehicules', canActivate: [AuthGuardService], component: LISTEVEHICULESComponent },
     { path: 'accueil', canActivate: [AuthGuardService],component: AccueilComponent },
     
   ];
