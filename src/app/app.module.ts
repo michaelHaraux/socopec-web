@@ -21,7 +21,13 @@ import { AgentListComponent } from './agent-list/agent-list.component';
 import { SingleAgentComponent } from './agent-list/single-agent/single-agent.component';
 import { AgentFormComponent } from './agent-list/agent-form/agent-form.component';
 import { Subject } from 'rxjs';
+import { LOCALE_ID } from '@angular/core';
 
+import { registerLocaleData } from '@angular/common';
+
+import localeFr from '@angular/common/locales/fr';
+
+registerLocaleData(localeFr);
 
 @NgModule({
   declarations: [
@@ -48,7 +54,7 @@ import { Subject } from 'rxjs';
     HttpClientModule,
     
   ],
-  providers: [HTTPNODESERVICEService,AuthService, AuthGuardService,Subject],
+  providers: [HTTPNODESERVICEService,AuthService, AuthGuardService,Subject,{provide: LOCALE_ID, useValue: "fr-CA" }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

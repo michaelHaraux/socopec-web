@@ -4,6 +4,7 @@ import { Agent } from '../models/agent.model';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-agent-list',
   templateUrl: './agent-list.component.html',

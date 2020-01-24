@@ -7,6 +7,8 @@ import * as firebase from 'firebase';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  date = new Date();
   constructor() {
     const config = {
       
