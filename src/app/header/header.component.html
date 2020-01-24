@@ -1,5 +1,9 @@
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
+ 
+  
+ <nav class="navbar navbar-default">
+     <div class="container-fluid">
+        <span *ngIf="isAuth">Vous êtes connecté avec l'adresse : "{{utilisateur}}"</span>
+        <span *ngIf="!isAuth">Vous n'êtes pas connecté</span>
       <ul class="nav navbar-nav navbar">
         <li routerLinkActive="active" *ngIf="!isAuth">
           <button type="button" class="btn btn-info"  routerLink="auth/signup">Créer un compte</button>
@@ -37,4 +41,5 @@
       </ul>
     </div>
   </nav>
+ 
   

@@ -93,7 +93,9 @@ li
 }
 
 #bienvenue {
-  max-width: 80%;
+max-width: 100%;
+height: auto;
+display: block;
 }
 
 #corp {
@@ -101,10 +103,19 @@ li
   min-width: 100%;
   min-height: 500px;
 }
+
+
+.DivCentrale{
+  float: right;
+}
 .DivGauche{
-width: 150px;
+ 
+width: 300px;
 height: 500px;
 float: left;
+font-family: fantasy;
+font-size: xx-large;
+text-align: center;
 }
 
 footer {

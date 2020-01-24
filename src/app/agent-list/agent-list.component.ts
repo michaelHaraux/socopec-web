@@ -19,8 +19,8 @@ export class AgentListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.agentsSubscription = this.agentsService.agentsSubject.subscribe(
-      (books: Agent[]) => {
-        this.agents = books;
+      (agents: Agent[]) => {
+        this.agents = agents;
       }
     );
     this.agentsService.emitAgents();
@@ -31,7 +31,7 @@ export class AgentListComponent implements OnInit, OnDestroy {
   }
 
   onDeleteAgent(agent: Agent) {
-    this.agentsService.removeBook(agent);
+    this.agentsService.removeAgent(agent);
   }
 
   onViewAgent(id: number) {

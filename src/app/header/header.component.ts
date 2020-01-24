@@ -10,7 +10,7 @@ import * as firebase from 'firebase';
 export class HeaderComponent implements OnInit {
 
   isAuth: boolean;
-
+  utilisateur: string
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
       (user) => {
         if (user) {
           this.isAuth = true;
+          this.utilisateur=user.email
         } else {
           this.isAuth = false;
         }
