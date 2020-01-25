@@ -21,23 +21,35 @@
     </ul>
 
     <ul class="nav navbar-nav">
-      <li routerLinkActive="active">
-        <button type="button" class="btn btn-secondary" routerLink="accueil">Accueil</button>
+      <li routerLinkActive="active" *ngIf="isAuth">
+        <button type="button" class="btn btn-secondary " routerLink="accueil">Accueil</button>
+      </li>
+      <li routerLinkActive="active" *ngIf="!isAuth">
+        <button type="button" class="btn btn-secondary disabled" routerLink="accueil">Accueil</button>
       </li>
     </ul>
     <ul class="nav navbar-nav">
-      <li routerLinkActive="active">
+      <li routerLinkActive="active" *ngIf="isAuth">
         <button type="button" class="btn btn-secondary" routerLink="listeVehicules">Vehicules</button>
       </li>
-    </ul>
-    <ul class="nav navbar-nav">
-      <li routerLinkActive="active">
-        <button type="button" class="btn btn-secondary" routerLink="agents">Agents</button>
+      <li routerLinkActive="active" *ngIf="!isAuth">
+        <button type="button" class="btn btn-secondary disabled" routerLink="listeVehicules">Accueil</button>
       </li>
     </ul>
     <ul class="nav navbar-nav">
-      <li routerLinkActive="active">
+      <li routerLinkActive="active" *ngIf="isAuth">
+        <button type="button" class="btn btn-secondary" routerLink="agents">Agents</button>
+      </li>
+      <li routerLinkActive="active" *ngIf="!isAuth">
+        <button type="button" class="btn btn-secondary disabled" routerLink="agents">Accueil</button>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active" *ngIf="isAuth">
         <button type="button" class="btn btn-secondary" routerLink="agences">Agences</button>
+      </li>
+      <li routerLinkActive="active" *ngIf="!isAuth">
+        <button type="button" class="btn btn-secondary disabled" routerLink="agences">Accueil</button>
       </li>
     </ul>
   </div>

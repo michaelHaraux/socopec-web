@@ -3,10 +3,8 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\accueil",
-    "\\src\\app\\service",
-    "\\src\\app\\service\\auth"
+    "\\src\\app\\accueil"
   ],
-  "SelectedNode": "\\src\\app\\service\\auth\\auth.guard.ts",
+  "SelectedNode": "\\src\\app\\accueil\\accueil.component.html",
   "PreviewInSolutionExplorer": false
 }
