@@ -1,69 +1,65 @@
-
-
-
-
-
 <div id="principale">
   <div class=DivGauche>
     Véhicules
   </div>
   <div class="DivCentrale">
     <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
-    <div>
-      <h2>Trié par :</h2>
-      <label class="radio-inline">
-        <input type="radio" name="optradio" value="modele" (click)="trierPar('modele')" checked>Modèle
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="optradio" value="agence">Agence
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="optradio" value="statut">Statut
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="optradio" value="puissance">Puissance
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="optradio" value="supprime">Supprimé
-      </label>
-
-      <br><br>
-      <input type="image" alt="Ajout" width="2%" (click)="setAddVehic()"
-             [src]="cheminImage">
+    <h2>Trier par :</h2>
+    <div id="selectTri">
+      <div>
+        <label class="radio-inline">
+          <input type="radio" name="optradio" value="modele" (click)="trierPar('modele')" checked>Modèle
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="optradio" value="agence">Agence
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="optradio" value="statut">Statut
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="optradio" value="puissance">Puissance
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="optradio" value="supprime">Supprimé
+        </label>
+      </div>
+      <div><div>Rechercher par modèle :</div><input type="text"></div>
+      <div><div>Ajouter un véhicule</div><div style="width: 30px;"><input type="image" alt="Ajout" width="25px" (click)="setAddVehic()" [src]="cheminImage"></div></div>
+      
+    </div>
+     <div>
       <app-ajout-vehicule *ngIf="addVehic"></app-ajout-vehicule>
-      <table *ngIf="hideTable">
-        <thead>
-          <tr>
-            <th scope="col">Identifiant</th>
-            <th scope="col">Miniature</th>
-            <th scope="col">Modèle</th>
-            <th scope="col">Agence</th>
-            <th scope="col">Statut</th>
-            <th scope="col">Supprime</th>
-            <th scope="col">Détail</th>
+      <table *ngIf="hideTable" style=" border:solid 1px black">
+        <thead style="background-color: aquamarine;" >
+          <tr >
+            <th scope="col" style=" border:solid 1px black">Identifiant</th>
+            <th scope="col" style=" border:solid 1px black">Miniature</th>
+            <th scope="col" style=" border:solid 1px black">Modèle</th>
+            <th scope="col" style=" border:solid 1px black">Agence</th>
+            <th scope="col" style=" border:solid 1px black">Statut</th>
+            <th scope="col" style=" border:solid 1px black">Supprime</th>
+            <th scope="col" style=" border:solid 1px black">Détail</th>
           </tr>
         </thead>
-        <tr (click)="toggleChild(vehicule.id)"
-            *ngFor="let vehicule of VEHICULES">
-          <td>{{ vehicule.id }}</td>
-          <td>
-            <input type="image" alt="Ajout" width="10%" (click)="setAddVehic()"
-                   [src]="cheminImage">
+        <tr (click)="toggleChild(vehicule.id)" *ngFor="let vehicule of VEHICULES" style=" border:solid 1px black">
+          <td style=" border:solid 1px black">{{ vehicule.id }}</td>
+          <td >
+            <input type="image" alt="Ajout" width="10%" [src]="cheminImage">
           </td>
-          <td>{{ vehicule.modele }}</td>
-          <td>{{ vehicule.agence }}</td>
-          <td>{{ vehicule.statut }}</td>
-          <td>{{ vehicule.supprime }}</td>
+          <td style=" border:solid 1px black">{{ vehicule.modele }}</td>
+          <td style=" border:solid 1px black">{{ vehicule.agence }}</td>
+          <td style=" border:solid 1px black">{{ vehicule.statut }}</td>
+          <td style=" border:solid 1px black">{{ vehicule.supprime }}</td>
           <td>
-            <input type="image" alt="Ajout" width="10%" 
-                   src="https://c7.uihere.com/files/496/449/244/computer-icons-search-button.jpg" (click)="toggleChild()">
+            <input type="image" alt="Ajout" width="10%"
+              src="https://c7.uihere.com/files/496/449/244/computer-icons-search-button.jpg" (click)="toggleChild()">
           </td>
         </tr>
       </table>
       <app-vehicule [showMePartially]="showVar" [IDFocus]="IDSelect"></app-vehicule>
-      <button class="btn btn-default" (click)="onBack()">Retour</button>
+      <button class="btn btn-default" (click)="onBack()">Retour Accueil</button> 
 
 
     </div>
+
   </div>
-</div>
