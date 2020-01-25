@@ -117,12 +117,15 @@ display: block;
   
   display: flex;
   flex-flow: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin-bottom: 10px;
   
 }
 #selectTri div {
- // align-self  : center;
+  vertical-align: top;
+  
 }
+
 #principale {
   
   display: flex;
