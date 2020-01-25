@@ -41,7 +41,9 @@ export class AgentListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.agentsSubscription.unsubscribe();
   }
-
+  onBack() {
+    this.router.navigate(['/accueil']);
+  }
   
 
 }

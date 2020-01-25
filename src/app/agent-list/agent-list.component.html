@@ -1,20 +1,27 @@
-<div class="row">
-    <div class="col-xs-12">
-      <h2>Agents</h2>
-      <div class="list-group">
-        <button
-          class="list-group-item"
-          *ngFor="let agent of agents ; let i = index"
-          (click)="onViewAgent(i)">
-          <h3 class="list-group-item-heading">
-            {{ agent.title }}
-            <button class="btn btn-default pull-right" (click)="onDeleteAgent(agent)">
-              <span class="glyphicon glyphicon-minus"></span>
-            </button>
-          </h3>
-          <p class="list-group-item-text">{{ agent.author }}</p>
-        </button>
-      </div>
-      <button class="btn btn-primary" (click)="onNewAgent()">Nouvel Agent</button>
-    </div>
+
+   
+  
+
+<div id="principale">
+  <div class=DivGauche>
+    Agents
   </div>
+  <div class="DivCentrale">
+    <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
+    <div class="list-group">
+      <button class="list-group-item"
+              *ngFor="let agent of agents ; let i = index"
+              (click)="onViewAgent(i)">
+        <h3 class="list-group-item-heading">
+          {{ agent.title }}
+          <div class="btn btn-default pull-right" (click)="onDeleteAgent(agent)">
+            <span class="glyphicon glyphicon-minus"></span>
+          </div>
+        </h3>
+        <p class="list-group-item-text">{{ agent.author }}</p>
+      </button>
+    </div>
+    <button class="btn btn-default" (click)="onBack()">Retour accueil</button>
+    <button class="btn btn-success" style="float: right;" (click)="onNewAgent()">Nouvel Agent</button>
+  </div>
+</div>

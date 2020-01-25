@@ -60,7 +60,9 @@ detectFiles(event) {
   this.onUploadFile(event.target.files[0]);
 }
 
-
+  onBack() {
+    this.router.navigate(['/agents']);
+  }
 
 }
 
