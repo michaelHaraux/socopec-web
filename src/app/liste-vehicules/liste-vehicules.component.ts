@@ -71,6 +71,8 @@ export class LISTEVEHICULESComponent implements OnInit {
     this.HTTPSERV.VEHICULESBDD.sort((a,b) => (a.modele < b.modele) ? 1 : -1);
     //this.HTTPSERV.VEHICULESBDD.sort((a,b) => (a.modele < b.modele) ? 1 : ((b.modele < a.modele) ? -1 : 0));
   }
-
+  onBack() {
+    this.router.navigate(['/accueil']);
+  }
 }
 
