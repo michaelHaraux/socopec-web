@@ -2,7 +2,7 @@ body {
   width: 80%;
   margin: auto;
   position: relative;
-  background-color: #EBE6E6;
+  background-color: white;
 }
 
 #banniereHaut {
@@ -63,6 +63,11 @@ body {
    float: right;
     
 }
+.navbar-default{
+    margin-bottom:0;
+    padding-left: 0px;
+    
+}
 ul {
  padding:0;
  margin:0;
@@ -108,12 +113,17 @@ display: block;
   min-width: 100%;
   min-height: 500px;
 }
+app-header{
 
-#principale{
-  display : flex;
-  flex-flow: row ;
+}
+#principale {
+  
+  display: flex;
+  flex-flow: row;
+  background-color: #EBE6E6;
 }
 .DivCentrale{
+    padding-right:30px;
   margin-left: 30px;
   width: 100%;
 }
@@ -124,6 +134,7 @@ display: block;
   width: 100%;
 }
 .DivGauche{
+min-width :250px;
 width: 30%x;
 height: 500px;
 font-family: fantasy;
