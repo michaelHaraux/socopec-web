@@ -135,7 +135,8 @@ display: block;
 }
 
 .DivCentrale{
-    padding-right:30px;
+  
+  padding-right:30px;
   margin-left: 30px;
   width: 100%;
 }
@@ -153,6 +154,19 @@ font-family: fantasy;
 font-size: xx-large;
 text-align: center;
 }
+#checkboxDroite{
+  background-color: #C2B8B8;
+  margin-top: 30%;
+  margin-right: 25%;
+  margin-left: 10%;
+  padding: 15px;
+  border: solid 1px black;
+  font-size: 1.1em;
+}
+#checkboxDroite p{
+  font-weight: bold;
+}
+
 #messageAccueil{
 
   text-align: center;
