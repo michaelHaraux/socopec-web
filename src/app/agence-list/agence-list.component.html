@@ -1,0 +1,25 @@
+
+<div id="principale">
+    <div class=DivGauche>
+      Agences
+    </div>
+    <div class="DivCentrale">
+      <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
+      <div class="list-group">
+        <button class="list-group-item"
+                *ngFor="let agence of agences ; let i = index"
+                (click)="onViewAgence(i)">
+          <h3 class="list-group-item-heading">
+            {{ agence.title }}
+            <div class="btn btn-default pull-right" (click)="onDeleteAgence(agence)">
+              <span class="glyphicon glyphicon-minus"></span>
+            </div>
+          </h3>
+          <p class="list-group-item-text">{{ agence.author }}</p>
+        </button>
+      </div>
+      <button class="btn btn-default" (click)="onBack()">Retour accueil</button>
+      <button class="btn btn-success" style="float: right;" (click)="onNewAgence()">Nouvelle Agence</button>
+    </div>
+  </div>
+  

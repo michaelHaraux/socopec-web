@@ -1,41 +1,41 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Agent } from '../models/agent.model';
+import { Agence } from '../models/agence.model';
 import DataSnapshot = firebase.database.DataSnapshot;
 import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AgentsService {
+export class AgencesService {
 
   constructor() {
-    this.getAgents();
+    this.getAgences();
     }
 
-  agents: Agent[] = [];
-  agentsSubject = new Subject<Agent[]>();
+  agences: Agence[] = [];
+  agencesSubject = new Subject<Agence[]>();
 
-  emitAgents() {
-    this.agentsSubject.next(this.agents);
+  emitAgences() {
+    this.agencesSubject.next(this.agences);
   }
-  saveAgents() {
-    firebase.database().ref('/agents').set(this.agents);
+  saveAgences() {
+    firebase.database().ref('/agences').set(this.agences);
 }
   
-  getAgents() {
-    firebase.database().ref('/agents')
+  getAgences() {
+    firebase.database().ref('/agences')
       .on('value', (data: DataSnapshot) => {
-          this.agents = data.val() ? data.val() : [];
-          this.emitAgents();
+          this.agences = data.val() ? data.val() : [];
+          this.emitAgences();
         }
       );
   }
 
-  getSingleAgent(id: number) {
+  getSingleAgence(id: number) {
     return new Promise(
       (resolve, reject) => {
-        firebase.database().ref('/agents/' + id).once('value').then(
+        firebase.database().ref('/agences/' + id).once('value').then(
           (data: DataSnapshot) => {
             resolve(data.val());
           }, (error) => {
@@ -45,23 +45,23 @@ export class AgentsService {
       }
     );
   }
-  createNewAgent(newAgent: Agent) {
-    this.agents.push(newAgent);
-    this.saveAgents();
-    this.emitAgents();
+  createNewAgence(newAgence: Agence) {
+    this.agences.push(newAgence);
+    this.saveAgences();
+    this.emitAgences();
   }
-
-/*   removeAgent(agent: Agent) {
-    const agentIndexToRemove = this.agents.findIndex(
+/* 
+  removeAgence(agence: Agence) {
+    const agentIndexToRemove = this.agences.findIndex(
       (agentEl) => {
-        if(agentEl === agent) {
+        if(agentEl === agence) {
           return true;
         }
       }
     );
-    this.agents.splice(agentIndexToRemove, 1);
-    this.saveAgents();
-    this.emitAgents();
+    this.agences.splice(agentIndexToRemove, 1);
+    this.saveAgences();
+    this.emitAgences();
   } */
 
   uploadFile(file: File) {
@@ -85,9 +85,9 @@ export class AgentsService {
       }
     );
 }
-removeAgent(agent: Agent) {
-  if(agent.photo) {
-    const storageRef = firebase.storage().refFromURL(agent.photo);
+removeAgence(agence: Agence) {
+  if(agence.photo) {
+    const storageRef = firebase.storage().refFromURL(agence.photo);
     storageRef.delete().then(
       () => {
         console.log('Photo removed!');
@@ -97,16 +97,16 @@ removeAgent(agent: Agent) {
       }
     );
   }
-  const agentIndexToRemove = this.agents.findIndex(
-    (agentEl) => {
-      if(agentEl === agent) {
+  const agenceIndexToRemove = this.agences.findIndex(
+    (agenceEl) => {
+      if(agenceEl === agence) {
         return true;
       }
     }
   );
-  this.agents.splice(agentIndexToRemove, 1);
-  this.saveAgents();
-  this.emitAgents();
+  this.agences.splice(agenceIndexToRemove, 1);
+  this.saveAgences();
+  this.emitAgences();
 }
 
 }

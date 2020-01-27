@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AGENCEComponent } from './agence/agence.component';
+import { AgenceListComponent } from './agence-list/agence-list.component';
 import {AgentListComponent} from './agent-list/agent-list.component';
 import {AgentFormComponent} from './agent-list/agent-form/agent-form.component';
 import {SingleAgentComponent} from './agent-list/single-agent/single-agent.component';
+import {AgenceFormComponent} from './agence-list/agence-form/agence-form.component';
+import {SingleAgenceComponent} from './agence-list/single-agence/single-agence.component';
 import { LISTEVEHICULESComponent } from './liste-vehicules/liste-vehicules.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
@@ -18,8 +20,10 @@ import { AuthGuardService } from './services/auth-guard.service';
     { path: 'accueil/agents', canActivate: [AuthGuardService], component: AgentListComponent },
     { path: 'agents/new', canActivate: [AuthGuardService], component: AgentFormComponent },
     { path: 'agents/view/:id', canActivate: [AuthGuardService], component: SingleAgentComponent },
-    { path: 'agences', canActivate: [AuthGuardService], component: AGENCEComponent },
-    { path: 'accueil/agences', canActivate: [AuthGuardService], component: AGENCEComponent },
+    { path: 'agences', canActivate: [AuthGuardService], component: AgenceListComponent },
+    { path: 'accueil/agences', canActivate: [AuthGuardService], component: AgenceListComponent },
+    { path: 'agences/new', canActivate: [AuthGuardService], component: AgenceFormComponent },
+    { path: 'agences/view/:id', canActivate: [AuthGuardService], component: SingleAgenceComponent },
     { path: 'listeVehicules', canActivate: [AuthGuardService], component: LISTEVEHICULESComponent },
     { path: 'accueil/listeVehicules', canActivate: [AuthGuardService], component: LISTEVEHICULESComponent },
     { path: 'accueil', canActivate: [AuthGuardService],component: AccueilComponent },

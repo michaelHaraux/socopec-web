@@ -1,0 +1,21 @@
+<div id="principale">
+  <div class=DivGauche>
+   Agence
+
+  </div>
+  <div class="DivCentrale">
+    <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
+
+    <div class="row">
+      <div class="col-xs-12">
+        <img style="max-width:400px;" *ngIf="agencephoto" [src]="agence.photo">
+        <h1>{{ agence.title }}</h1>
+        <h3>{{ agence.author }}</h3>
+        <p>{{ agence.synopsis }}</p>
+        <button class="btn btn-default" (click)="onBack()">Retour</button>
+      </div>
+    </div>
+
+
+  </div>
+</div>

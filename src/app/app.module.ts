@@ -6,8 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { VEHICULEComponent } from './vehicule/vehicule.component';
 import { LISTEVEHICULESComponent } from './liste-vehicules/liste-vehicules.component';
-import { LISTEAGENCESComponent } from './liste-agences/liste-agences.component';
-import { AGENCEComponent } from './agence/agence.component';
 import { AjoutVehiculeComponent } from './ajout-vehicule/ajout-vehicule.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -22,10 +20,11 @@ import { SingleAgentComponent } from './agent-list/single-agent/single-agent.com
 import { AgentFormComponent } from './agent-list/agent-form/agent-form.component';
 import { Subject } from 'rxjs';
 import { LOCALE_ID } from '@angular/core';
-
 import { registerLocaleData } from '@angular/common';
-
 import localeFr from '@angular/common/locales/fr';
+import { AgenceListComponent } from './agence-list/agence-list.component';
+import { AgenceFormComponent } from './agence-list/agence-form/agence-form.component';
+import { SingleAgenceComponent } from './agence-list/single-agence/single-agence.component';
 
 registerLocaleData(localeFr);
 
@@ -34,8 +33,6 @@ registerLocaleData(localeFr);
     AppComponent,
     VEHICULEComponent,
     LISTEVEHICULESComponent,
-    LISTEAGENCESComponent,
-    AGENCEComponent,
     AjoutVehiculeComponent,
     AccueilComponent,
     SignupComponent,
@@ -43,7 +40,10 @@ registerLocaleData(localeFr);
     HeaderComponent,
     AgentListComponent,
     SingleAgentComponent,
-    AgentFormComponent
+    AgentFormComponent,
+    AgenceListComponent,
+    AgenceFormComponent,
+    SingleAgenceComponent
   ],
   imports: [
     BrowserModule,
