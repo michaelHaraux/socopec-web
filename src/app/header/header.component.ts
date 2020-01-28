@@ -9,6 +9,7 @@ import * as firebase from 'firebase';
 })
 export class HeaderComponent implements OnInit {
 
+  isAdmin: boolean;
   isAuth: boolean;
   utilisateur: string
   constructor(private authService: AuthService) { }
@@ -19,6 +20,9 @@ export class HeaderComponent implements OnInit {
         if (user) {
           this.isAuth = true;
           this.utilisateur=user.email
+          if(this.utilisateur=="admin@gmail.com"){
+            this.isAdmin = true;
+          }else{this.isAdmin=false}
         } else {
           this.isAuth = false;
         }
@@ -27,6 +31,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onSignOut() {
+    this.isAdmin=false;
     this.authService.signOutUser();
   }
 
