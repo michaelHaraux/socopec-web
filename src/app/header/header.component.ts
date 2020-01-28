@@ -11,6 +11,8 @@ export class HeaderComponent implements OnInit {
 
   isAuth: boolean;
   utilisateur: string
+  admin: boolean
+  
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
@@ -19,6 +21,9 @@ export class HeaderComponent implements OnInit {
         if (user) {
           this.isAuth = true;
           this.utilisateur=user.email
+          if(this.utilisateur=="admin@gmail.com"){
+            this.admin=true;
+          }else this.admin = false;
         } else {
           this.isAuth = false;
         }
