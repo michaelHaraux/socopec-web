@@ -29,7 +29,8 @@ export class AgentFormComponent implements OnInit {
     this.agentForm = this.formBuilder.group({
       title: ['', Validators.required],
       author: ['', Validators.required],
-      synopsis: ''
+      synopsis: '',
+      tel: ''
     });
   }
   
@@ -37,8 +38,10 @@ export class AgentFormComponent implements OnInit {
     const title = this.agentForm.get('title').value;
     const author = this.agentForm.get('author').value;
     const synopsis = this.agentForm.get('synopsis').value;
+    const tel = this.agentForm.get('tel').value;
     const newAgent = new Agent(title, author);
     newAgent.synopsis = synopsis;
+    newAgent.tel = tel;
     if(this.fileUrl && this.fileUrl !== '') {
       newAgent.photo = this.fileUrl;
     }

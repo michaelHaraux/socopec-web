@@ -10,9 +10,10 @@
     <div class="row">
       <div class="col-xs-12">
         <img style="max-width:400px;" *ngIf="agent.photo" [src]="agent.photo">
-        <h1>{{ agent.title }}</h1>
-        <h3>{{ agent.author }}</h3>
-        <p>{{ agent.synopsis }}</p>
+        <h1>Nom : {{ agent.title }}</h1>
+        <h2 > Prénom :{{ agent.author }}</h2>
+        <h2>Adresse : {{ agent.synopsis }}</h2>
+        <h3>Téléphone : {{ agent.tel }}</h3>
         <button class="btn btn-default" (click)="onBack()">Retour</button>
       </div>
     </div>
