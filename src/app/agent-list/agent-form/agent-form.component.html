@@ -24,13 +24,13 @@
         <div class="form-group">
           <label for="tel">Numéro de téléphone</label>
           <input id="tel" class="form-control" formControlName="tel">
-        
+
         </div>
         <button class="btn btn-danger" (click)="onBack()">Annuler</button>
         <button class="btn btn-success" style="float: right;" [disabled]="agentForm.invalid" type="submit">
           Enregistrer
         </button>
- <!--        <div class="form-group">
+        <!--        <div class="form-group">
           <h4>Ajouter une photo</h4>
           <input type="file" (change)="detectFiles($event)" class="form-control" accept="image/*">
           <p class="text-success" *ngIf="fileUploaded">Fichier chargé !</p>
@@ -46,26 +46,38 @@
   </div>
   <div class="DivDroite">
     <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
-    <div id="checkboxDroite" >
+
+    <div id="checkboxDroite">
+
       <p>Gestion des droits</p>
-      <div>
-        <label class="radio-inline">
-          <input type="checkbox" name="optradio" value="modele" (click)="trierPar('modele')" checked>   Ajout d'un véhicule
-        </label>
-      </div>
-      <br>
-      <div>
-        <label class="radio-inline">
-          <input type="checkbox" name="optradio" value="agence">   Suppression d'un véhicule
-        </label>
-      </div>
-      <br>
-      <div>
-        <label class="radio-inline">
-          <input type="checkbox" name="optradio" value="statut">   Modification d'un véhicule
-        </label>
-      </div>
+ 
+      <form [formGroup]="agentForm" (ngSubmit)="onSaveAgent()">
+        <!-- <label>
+          <input type="checkbox" [(ngModel)]="theCheckbox" data-md-icheck (change)="toggleVisibility($event)" />
+          Checkbox is <span *ngIf="marked">checked</span><span *ngIf="!marked">unchecked</span>
+          <span class="checkmark"></span>
+          </label> -->
+        <div class="form-group">
+          <label class="radio-inline" for="add">
+            <input type="checkbox" id="add" [value]="add" (change)="toggleVisibility($event)" class="form-control"
+              FormControlName="add"> Ajout d'un véhicule
+          </label>
+        </div>
+        <br>
+        <div>
+          <label class="radio-inline">
+            <input type="checkbox" name="optradio" value="delete"> Suppression d'un véhicule
+          </label>
+        </div>
+        <br>
+        <div>
+          <label class="radio-inline">
+            <input type="checkbox" name="optradio" value="edit"> Modification d'un véhicule
+          </label>
+        </div>
+      </form>
     </div>
+
   </div>
 
 </div>

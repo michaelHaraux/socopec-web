@@ -13,9 +13,9 @@ export class SingleAgentComponent implements OnInit {
 
 
   agent: Agent;
-
+  droitAdd: boolean;
   constructor(private route: ActivatedRoute, private agentsService: AgentsService,
-              private router: Router) {}
+    private router: Router) { }
 
   ngOnInit() {
     this.agent = new Agent('', '');
@@ -23,8 +23,15 @@ export class SingleAgentComponent implements OnInit {
     this.agentsService.getSingleAgent(+id).then(
       (agent: Agent) => {
         this.agent = agent;
+        if (this.agent.add) {
+          this.droitAdd = true
+        } else {
+          this.droitAdd = false;
+        }
+
       }
     );
+
   }
 
   onBack() {

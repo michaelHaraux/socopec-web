@@ -11,7 +11,7 @@
                 (click)="onViewAgence(i)">
           <h3 class="list-group-item-heading">
             {{ agence.title }}
-            <div class="btn btn-default pull-right" (click)="onDeleteAgence(agence)">
+            <div *ngIf="marked" class="btn btn-default pull-right" (click)="onDeleteAgence(agence)">
               <span class="glyphicon glyphicon-minus"></span>
             </div>
           </h3>

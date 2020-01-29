@@ -17,6 +17,7 @@ export class AgentFormComponent implements OnInit {
   fileIsUploading = false;
   fileUrl: string;
   fileUploaded = false;
+  add =false;
 
   constructor(private formBuilder: FormBuilder, private agentsService: AgentsService,
               private router: Router) { }
@@ -24,13 +25,17 @@ export class AgentFormComponent implements OnInit {
   ngOnInit() {
     this.initForm();
   }
-  
+  toggleVisibility(e){
+    this.add= e.target.checked;
+  }
   initForm() {
     this.agentForm = this.formBuilder.group({
       title: ['', Validators.required],
       author: ['', Validators.required],
       synopsis: '',
-      tel: ''
+      tel: '',
+      add:'',
+   //   marked: ''
     });
   }
   
@@ -38,10 +43,14 @@ export class AgentFormComponent implements OnInit {
     const title = this.agentForm.get('title').value;
     const author = this.agentForm.get('author').value;
     const synopsis = this.agentForm.get('synopsis').value;
+    const add = this.agentForm.get('add').value;
+  //  const marked = this.agentForm.get('marked').value;
     const tel = this.agentForm.get('tel').value;
     const newAgent = new Agent(title, author);
     newAgent.synopsis = synopsis;
     newAgent.tel = tel;
+    newAgent.add = this.add;
+  //  newAgent.marked = this.marked;
     if(this.fileUrl && this.fileUrl !== '') {
       newAgent.photo = this.fileUrl;
     }
@@ -66,6 +75,7 @@ detectFiles(event) {
   onBack() {
     this.router.navigate(['/agents']);
   }
+  
 
 }
 

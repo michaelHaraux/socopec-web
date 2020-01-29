@@ -14,6 +14,8 @@
         <h2 > Prénom :{{ agent.author }}</h2>
         <h2>Adresse : {{ agent.synopsis }}</h2>
         <h3>Téléphone : {{ agent.tel }}</h3>
+        <h3>Droit : <span *ngIf="droitAdd"> Ajout</span><span *ngIf="!droitAdd"> Pas de droit</span></h3>
+       
         <button class="btn btn-default" (click)="onBack()">Retour</button>
       </div>
     </div>
