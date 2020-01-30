@@ -1,1 +1,59 @@
-<p>vehicule-form works!</p>
+<div id="principale">
+    <div class=DivGauche>
+      Nouveau Véhicule
+  
+    </div>
+    <div class="DivCentrale">
+  
+      <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
+      <div id="form">
+        <form [formGroup]="vehiculeForm" (ngSubmit)="onSaveVehicule()">
+          <div class="form-group">
+            <label for="identifiant">Identifiant</label>
+            <input type="text" id="identifiant" class="form-control" formControlName="identifiant">
+          </div>
+          <div class="form-group">
+            <label for="modele">Modèle</label>
+            <input type="text" id="modele" class="form-control" formControlName="modele">
+          </div>
+      
+          <button class="btn btn-danger" (click)="onBack()">Annuler</button>
+          <button class="btn btn-success" style="float: right;" [disabled]="vehiculeForm.invalid" type="submit">
+            Enregistrer
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- <div class="DivDroite">
+      <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
+  
+      <div id="checkboxDroite">
+  
+        <p>Gestion des droits</p>
+   
+        <form [formGroup]="agentForm" (ngSubmit)="onSaveAgent()">
+
+          <div class="form-group">
+            <label class="radio-inline" for="add">
+              <input type="checkbox" id="add" [value]="add" (change)="toggleVisibility($event)" class="form-control"
+                FormControlName="add"> Ajout d'un véhicule
+            </label>
+          </div>
+          <br>
+          <div>
+            <label class="radio-inline">
+              <input type="checkbox" name="optradio" value="delete"> Suppression d'un véhicule
+            </label>
+          </div>
+          <br>
+          <div>
+            <label class="radio-inline">
+              <input type="checkbox" name="optradio" value="edit"> Modification d'un véhicule
+            </label>
+          </div>
+        </form>
+      </div>
+   -->
+    </div>
+  
+

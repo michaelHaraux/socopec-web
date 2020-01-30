@@ -1,1 +1,22 @@
-<p>single-vehicule works!</p>
+<div id="principale">
+    <div class=DivGauche>
+     Véhicule
+  
+    </div>
+    <div class="DivCentrale">
+      <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
+  
+      <div class="row">
+        <div class="col-xs-12">
+          <img style="max-width:400px;" *ngIf="vehiculephoto" [src]="vehicule.photo">
+          <h1>{{ vehicule.identifiant }}</h1>
+          <h3>{{ vehicule.modele }}</h3>
+       
+          <button class="btn btn-default" (click)="onBack()">Retour</button>
+        </div>
+      </div>
+  
+  
+    </div>
+  </div>
+  

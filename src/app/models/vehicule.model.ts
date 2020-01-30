@@ -1,8 +1,7 @@
 export class Vehicule {
-    Identifiant : BigInteger;
-    Modèle : string;
+
     photo: string;
     
-    constructor() {
+    constructor(public identifiant: string, public modele: string) {
     }
   }
