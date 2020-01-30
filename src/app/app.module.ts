@@ -25,6 +25,9 @@ import localeFr from '@angular/common/locales/fr';
 import { AgenceListComponent } from './agence-list/agence-list.component';
 import { AgenceFormComponent } from './agence-list/agence-form/agence-form.component';
 import { SingleAgenceComponent } from './agence-list/single-agence/single-agence.component';
+import { VehiculeListComponent } from './vehicule-list/vehicule-list.component';
+import { SingleVehiculeComponent } from './vehicule-list/single-vehicule/single-vehicule.component';
+import { VehiculeFormComponent } from './vehicule-list/vehicule-form/vehicule-form.component';
 
 registerLocaleData(localeFr);
 
@@ -43,7 +46,10 @@ registerLocaleData(localeFr);
     AgentFormComponent,
     AgenceListComponent,
     AgenceFormComponent,
-    SingleAgenceComponent
+    SingleAgenceComponent,
+    VehiculeListComponent,
+    SingleVehiculeComponent,
+    VehiculeFormComponent
   ],
   imports: [
     BrowserModule,

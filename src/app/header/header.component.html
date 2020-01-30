@@ -38,6 +38,14 @@
     </ul>
     <ul class="nav navbar-nav">
       <li routerLinkActive="active" *ngIf="isAuth">
+        <button type="button" class="btn btn-secondary" routerLink="vehicules">VEHICULES</button>
+      </li>
+      <li routerLinkActive="active" *ngIf="!isAuth">
+        <button type="button" class="btn btn-secondary disabled" routerLink="vehicules">VEHICULES</button>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active" *ngIf="isAuth">
         <button type="button" class="btn btn-secondary" routerLink="agents">Agents</button>
       </li>
       <li routerLinkActive="active" *ngIf="!isAuth">
