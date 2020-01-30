@@ -18,6 +18,7 @@ export class AgentFormComponent implements OnInit {
   fileUrl: string;
   fileUploaded = false;
   add =false;
+  
 
   constructor(private formBuilder: FormBuilder, private agentsService: AgentsService,
               private router: Router) { }
@@ -35,7 +36,7 @@ export class AgentFormComponent implements OnInit {
       synopsis: '',
       tel: '',
       add:'',
-   //   marked: ''
+      email: ''
     });
   }
   
@@ -43,14 +44,14 @@ export class AgentFormComponent implements OnInit {
     const title = this.agentForm.get('title').value;
     const author = this.agentForm.get('author').value;
     const synopsis = this.agentForm.get('synopsis').value;
-    const add = this.agentForm.get('add').value;
-  //  const marked = this.agentForm.get('marked').value;
+    const email = this.agentForm.get('email').value;
     const tel = this.agentForm.get('tel').value;
     const newAgent = new Agent(title, author);
     newAgent.synopsis = synopsis;
     newAgent.tel = tel;
     newAgent.add = this.add;
-  //  newAgent.marked = this.marked;
+    newAgent.email = email;
+
     if(this.fileUrl && this.fileUrl !== '') {
       newAgent.photo = this.fileUrl;
     }
