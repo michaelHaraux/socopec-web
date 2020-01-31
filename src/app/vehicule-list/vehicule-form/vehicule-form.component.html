@@ -16,6 +16,30 @@
             <label for="modele">Modèle</label>
             <input type="text" id="modele" class="form-control" formControlName="modele">
           </div>
+          <div class="form-group">
+            <label for="dateFab">Date de fabrication</label>
+            <input type="text" id="dateFab" class="form-control" formControlName="dateFab">
+          </div>
+          <div class="form-group">
+            <label for="hauteur">Hauteur</label>
+            <input type="text" id="hauteur" class="form-control" formControlName="hauteur">
+          </div>
+          <div class="form-group">
+            <label for="largeur">Largeur</label>
+            <input type="text" id="largeur" class="form-control" formControlName="largeur">
+          </div>
+          <div class="form-group">
+            <label for="poids">Poids</label>
+            <input type="number" id="poids" class="form-control" formControlName="poids">
+          </div>
+          <div class="form-group">
+            <label for="puissance">Puissance</label>
+            <input type="number" id="puissance" class="form-control" formControlName="puissance">
+          </div>
+          <div class="form-group">
+            <label for="agence">Agence</label>
+            <input type="text" id="agence" class="form-control" formControlName="agence">
+          </div>
       
           <button class="btn btn-danger" (click)="onBack()">Annuler</button>
           <button class="btn btn-success" style="float: right;" [disabled]="vehiculeForm.invalid" type="submit">

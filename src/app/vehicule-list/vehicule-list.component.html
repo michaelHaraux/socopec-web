@@ -16,8 +16,13 @@
               <span class="glyphicon glyphicon-minus"></span>
             </div>
           </h3>
-          <p class="list-group-item-text">{{ vehicule.identifiant }}</p>
-          <p class="list-group-item-text">{{ vehicule.modele }}</p>
+          <p class="list-group-item-text">Id : {{ vehicule.identifiant }}</p>
+          <p class="list-group-item-text">{{ vehicule.miniature }}</p>
+          <p class="list-group-item-text">Modèle : {{ vehicule.modele }}</p>
+          <p class="list-group-item-text">Agence : {{ vehicule.agence }}</p>
+          <p class="list-group-item-text">Status : {{ vehicule.status }}</p>
+   
+         
         </button>
       </div>
       <button class="btn btn-default" (click)="onBack()">Retour accueil</button>
