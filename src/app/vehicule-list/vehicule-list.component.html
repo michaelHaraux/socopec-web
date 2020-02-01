@@ -7,7 +7,7 @@
     <div class="DivCentrale">
       <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
       <div class="list-group">
-        <button class="list-group-item"
+<!--         <button class="list-group-item"
                 *ngFor="let vehicule of vehicules ; let i = index"
                 (click)="onViewVehicule(i)">
           <h3 class="list-group-item-heading">
@@ -23,7 +23,58 @@
           <p class="list-group-item-text">Status : {{ vehicule.add }}</p>
           <p class="list-group-item-text">Date : {{ vehicule.dateFab }}</p>
          
-        </button>
+        </button> -->
+      </div>
+      <h2>Trier par :</h2>
+      <div id="selectTri">
+        <div>
+          <label class="radio-inline">
+            <input type="radio" name="optradio" value="modele" (click)="trierPar('modele')" checked>Modèle
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="optradio" value="agence">Agence
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="optradio" value="statut">Statut
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="optradio" value="puissance">Puissance
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="optradio" value="supprime">Supprimé
+          </label>
+        </div>
+        <div><div>Rechercher par modèle :</div><input type="text"></div>
+        <div><div>Ajouter un véhicule</div><div style="width: 30px;"><input type="image" alt="Ajout" width="25px" (click)="setAddVehic()" [src]="cheminImage"></div></div>
+        
+      </div>
+      <div>
+        <table style=" border:solid 1px black; margin: 10px;">
+          <thead style="background-color: aquamarine;" >
+            <tr >
+              <th scope="col" style=" border:solid 1px black">Identifiant</th>
+              <th scope="col" style=" border:solid 1px black">Miniature</th>
+              <th scope="col" style=" border:solid 1px black">Modèle</th>
+              <th scope="col" style=" border:solid 1px black">Agence</th>
+              <th scope="col" style=" border:solid 1px black">Statut</th>
+              <th scope="col" style=" border:solid 1px black">Date de fabrication</th>
+              <th scope="col" style=" border:solid 1px black"> Détails</th>
+            </tr>
+          </thead>
+          <tr  *ngFor="let vehicule of vehicules ; let i = index" style=" border:solid 1px black">
+        
+            <td style=" border:solid 1px black">{{ vehicule.identifiant }}</td>
+            <td style=" border:solid 1px black">{{ vehicule.miniature }}</td>
+            <td style=" border:solid 1px black">{{ vehicule.modele }}</td>
+            <td style=" border:solid 1px black">{{ vehicule.agence }}</td>
+            <td style=" border:solid 1px black">{{ vehicule.add }}</td>
+            <td style=" border:solid 1px black">{{ vehicule.dateFab }}</td>
+            <td>
+              <input type="image" alt="Ajout" width="10%"
+                src="https://c7.uihere.com/files/496/449/244/computer-icons-search-button.jpg"  (click)="onViewVehicule(i)">
+            </td>
+          </tr>
+        </table>
       </div>
       <button class="btn btn-default" (click)="onBack()">Retour accueil</button>
       <button class="btn btn-success" style="float: right;" (click)="onNewVehicule()">Nouveau Véhicule</button>

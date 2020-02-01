@@ -3,7 +3,7 @@
     <!-- <div routerLinkActive="active">
         <span routerLink="accueil" >🏡 </span>
       </div> -->
-    <span *ngIf="isAuth">Vous êtes connecté avec l'adresse : "{{utilisateur}}"</span>
+    <span *ngIf="isAuth"> "{{utilisateur}}"</span>
     <span *ngIf="!isAuth">Vous n'êtes pas connecté</span>
     <ul class="nav navbar-nav navbar">
       <li routerLinkActive="active" *ngIf="isAdmin">
