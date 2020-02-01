@@ -28,6 +28,9 @@ import { SingleAgenceComponent } from './agence-list/single-agence/single-agence
 import { VehiculeListComponent } from './vehicule-list/vehicule-list.component';
 import { SingleVehiculeComponent } from './vehicule-list/single-vehicule/single-vehicule.component';
 import { VehiculeFormComponent } from './vehicule-list/vehicule-form/vehicule-form.component';
+import { EditVehiculeComponent } from './vehicule-list/edit-vehicule/edit-vehicule.component';
+import { EditAgentComponent } from './agent-list/edit-agent/edit-agent.component';
+import { EditAgenceComponent } from './agence-list/edit-agence/edit-agence.component';
 
 registerLocaleData(localeFr);
 
@@ -49,7 +52,10 @@ registerLocaleData(localeFr);
     SingleAgenceComponent,
     VehiculeListComponent,
     SingleVehiculeComponent,
-    VehiculeFormComponent
+    VehiculeFormComponent,
+    EditVehiculeComponent,
+    EditAgentComponent,
+    EditAgenceComponent
   ],
   imports: [
     BrowserModule,

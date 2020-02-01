@@ -1,38 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Vehicule } from '../../models/vehicule.model';
+import { ActivatedRoute, Router } from '@angular/router';
 import { VehiculesService } from '../../services/vehicule.service';
-import { Router, ActivatedRoute } from '@angular/router';
-
-import * as firebase from 'firebase';
-import { Agence } from 'src/app/models/agence.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-vehicule-form',
-  templateUrl: './vehicule-form.component.html',
-  styleUrls: ['./vehicule-form.component.scss']
+  selector: 'app-edit-vehicule',
+  templateUrl: './edit-vehicule.component.html',
+  styleUrls: ['./edit-vehicule.component.scss']
 })
-export class VehiculeFormComponent implements OnInit {
+export class EditVehiculeComponent implements OnInit {
 
-  
-  //vehicule: Vehicule;
+ 
+  vehicule: Vehicule;
   vehiculeForm: FormGroup;
   fileIsUploading = false;
   fileUrl: string;
   fileUploaded = false;
- 
-  
+  id : number;
 
   constructor(private route: ActivatedRoute,private formBuilder: FormBuilder, private vehiculesService: VehiculesService,
-              private router: Router) { }
-              
+    private router: Router) { }
+
   ngOnInit() {
+    this.vehicule = new Vehicule('', '');
+    const id = this.route.snapshot.params['id'];
+    this.id = id;
+    this.vehiculesService.getSingleVehicule(+id).then(
+      (vehicule: Vehicule) => {
+        this.vehicule = vehicule;
+      }
+    );
    
-  
     this.initForm();
   }
 
   initForm() {
+    
     this.vehiculeForm = this.formBuilder.group({
       identifiant: ['', Validators.required],
       modele: ['', Validators.required],
@@ -45,8 +49,15 @@ export class VehiculeFormComponent implements OnInit {
     });
   }
   
-  onSaveVehicule() {
+  onDeleteVehicule(vehicule: Vehicule) {
+    this.vehiculesService.removeVehicule(vehicule);
+    
+  }
+  onSaveVehicule(vehicule: Vehicule) {
+  
+    
     const identifiant = this.vehiculeForm.get('identifiant').value;
+    
     const modele = this.vehiculeForm.get('modele').value;
     const dateFab = this.vehiculeForm.get('dateFab').value;
     const hauteur = this.vehiculeForm.get('hauteur').value;
@@ -86,8 +97,5 @@ detectFiles(event) {
   onBack() {
     this.router.navigate(['/vehicules']);
   }
-  
 
 }
-
-

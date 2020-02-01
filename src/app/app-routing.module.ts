@@ -15,7 +15,7 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { AuthGuardService } from './services/auth-guard.service';
-
+import {EditVehiculeComponent} from './vehicule-list/edit-vehicule/edit-vehicule.component'
   const appRoutes: Routes = [
     { path: 'auth/signup', component: SignupComponent },
     { path: 'auth/signin', component: SigninComponent },
@@ -27,11 +27,13 @@ import { AuthGuardService } from './services/auth-guard.service';
     { path: 'vehicules', canActivate: [AuthGuardService], component: VehiculeListComponent },
     { path: 'accueil/vehicules', canActivate: [AuthGuardService], component: VehiculeListComponent },
     { path: 'vehicules/new', canActivate: [AuthGuardService], component: VehiculeFormComponent },
+  { path: 'vehicules/edit/:id', canActivate: [AuthGuardService], component: EditVehiculeComponent },
     { path: 'vehicules/view/:id', canActivate: [AuthGuardService], component: SingleVehiculeComponent },
 
     { path: 'agences', canActivate: [AuthGuardService], component: AgenceListComponent },
     { path: 'accueil/agences', canActivate: [AuthGuardService], component: AgenceListComponent },
     { path: 'agences/new', canActivate: [AuthGuardService], component: AgenceFormComponent },
+  
     { path: 'agences/view/:id', canActivate: [AuthGuardService], component: SingleAgenceComponent },
     { path: 'listeVehicules', canActivate: [AuthGuardService], component: LISTEVEHICULESComponent },
     { path: 'accueil/listeVehicules', canActivate: [AuthGuardService], component: LISTEVEHICULESComponent },
