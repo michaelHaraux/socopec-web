@@ -20,9 +20,10 @@ export class EditVehiculeComponent implements OnInit {
   id: number;
   pret : boolean;
   add: boolean;
+  
   constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private vehiculesService: VehiculesService,
     private router: Router) { }
-
+    
   ngOnInit() {
 
 
@@ -30,6 +31,7 @@ export class EditVehiculeComponent implements OnInit {
   }
 
   initForm() {
+   
     this.vehiculeForm = this.formBuilder.group({
       photo: '',
       identifiant: ['', Validators.required],
