@@ -8,11 +8,15 @@
 
     <div class="row">
       <div class="col-xs-12">
-        <img style="max-width:400px;" *ngIf="agencephoto" [src]="agence.photo">
-        <h1>{{ agence.title }}</h1>
-        <h3>{{ agence.author }}</h3>
-        <p>{{ agence.synopsis }}</p>
+        <div><img style="max-width:200px;" *ngIf="agence.photo" [src]="agence.photo"></div>
+        <div>
+          <h1>Non de l'agence : {{ agence.nom }}</h1>
+        <h3> Adresse : {{ agence.rue }}   {{ agence.complement }}  {{ agence.code }}  {{ agence.ville }}</h3>
+        <p> Télephone : {{ agence.numero }}</p>
+        <p>Fax : {{ agence.fax }}</p></div>
         <button class="btn btn-default" (click)="onBack()">Retour</button>
+        <button class="btn btn-success" (click)="onEditAgence(id)">Modifier l'agence</button>
+        
       </div>
     </div>
 

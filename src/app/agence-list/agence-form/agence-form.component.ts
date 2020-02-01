@@ -27,18 +27,34 @@ export class AgenceFormComponent implements OnInit {
 
   initForm() {
     this.agenceForm = this.formBuilder.group({
-      title: ['', Validators.required],
-      author: ['', Validators.required],
-      synopsis: ''
+      nom: ['', Validators.required],
+      rue: ['', Validators.required],
+      complement: '',
+      code: '',
+      ville: '',
+      numero: '',
+      fax: '',
     });
   }
 
   onSaveAgence() {
-    const title = this.agenceForm.get('title').value;
-    const author = this.agenceForm.get('author').value;
-    const synopsis = this.agenceForm.get('synopsis').value;
-    const newAgence = new Agence(title, author);
-    newAgence.synopsis = synopsis;
+    const nom = this.agenceForm.get('nom').value;
+    const rue = this.agenceForm.get('rue').value;
+    const complement = this.agenceForm.get('complement').value;
+    const code = this.agenceForm.get('code').value;
+    const ville = this.agenceForm.get('ville').value;
+    const numero = this.agenceForm.get('numero').value;
+    const fax = this.agenceForm.get('fax').value;
+
+    const newAgence = new Agence(nom, rue);
+    newAgence.complement = complement;
+    newAgence.code = code;
+    newAgence.ville = ville;
+     newAgence.numero = numero; 
+     newAgence.fax = fax;
+
+
+
     if (this.fileUrl && this.fileUrl !== '') {
       newAgence.photo = this.fileUrl;
     }

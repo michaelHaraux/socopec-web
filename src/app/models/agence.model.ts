@@ -1,6 +1,12 @@
 export class Agence {
     photo: string;
-    synopsis: string;
-    constructor(public title: string, public author: string) {
+    complement: string;
+    code: number;
+    ville : string;
+    numero : number;
+    fax : number;
+
+
+    constructor(public nom: string, public rue: string) {
     }
   }
