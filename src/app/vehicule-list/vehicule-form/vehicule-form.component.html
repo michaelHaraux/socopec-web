@@ -43,16 +43,17 @@
             <input type="number" id="puissance" class="form-control" formControlName="puissance">
           </div>
           <div class="form-group">
-            <label for="agence">Agence</label>
-            <input type="text" id="agence" class="form-control" formControlName="agence">
+            <label for="agence">Puissance</label>
+            <input type="text" id="agence" class="form-control" formControlName="puissance">
           </div>
           <div class="form-group">
             <h4>Ajouter une photo</h4>
             <input type="file" (change)="detectFiles($event)" class="form-control" accept="image/*">
             <p class="text-success" *ngIf="fileUploaded">Fichier chargé !</p>
           </div>
-          <button class="btn btn-danger" (click)="onBack()">Annuler</button>
-          <button class="btn btn-success" style="float: right;" [disabled]="vehiculeForm.invalid" type="submit">
+          <button class="btn btn-default" (click)="onBack()">Retour</button>
+          <button class="btn btn-success" style="float: right;" [disabled]="vehiculeForm.invalid || fileIsUploading"
+            type="submit">
             Enregistrer
           </button>
         </form>
@@ -65,7 +66,7 @@
   
         <p>Gestion des statuts</p>
    
-        <form [formGroup]="agentForm" (ngSubmit)="onSaveAgent()">
+        <form [formGroup]="vehiculeForm" (ngSubmit)="onSaveVehicule()">
 
           <div class="form-group">
             <label class="radio-inline" for="add">
@@ -88,6 +89,6 @@
         </form>
       </div>
    
-    </div>
+    
   
-
+</div>

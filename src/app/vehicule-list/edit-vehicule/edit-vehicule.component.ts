@@ -74,8 +74,8 @@ export class EditVehiculeComponent implements OnInit {
   toggleVisibility(e){
     this.add= e.target.checked;
   }
-  onEditVehicule(vehicule: Vehicule) {
-    this.vehiculesService.removeVehicule(vehicule);
+  onEditVehicule() {
+    this.vehiculesService.removeVehicule(this.vehicule);
     console.log('Mise à jour ...');
     const identifiant = this.vehiculeForm.get('identifiant').value;
     const photo = this.vehiculeForm.get('photo').value;
