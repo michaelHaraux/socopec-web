@@ -53,6 +53,7 @@ export class VehiculeFormComponent implements OnInit {
     const largeur = this.vehiculeForm.get('largeur').value;
     const poids = this.vehiculeForm.get('poids').value;
     const puissance = this.vehiculeForm.get('puissance').value;
+    const agence = this.vehiculeForm.get('agence').value;
 
     const newVehicule = new Vehicule(identifiant, modele);
     newVehicule.dateFab = dateFab;
@@ -61,6 +62,7 @@ export class VehiculeFormComponent implements OnInit {
     newVehicule.poids = poids;
     newVehicule.puissance = puissance;
     newVehicule.dateFab = dateFab;
+    newVehicule.agence = agence;
 
     if(this.fileUrl && this.fileUrl !== '') {
       newVehicule.photo = this.fileUrl;

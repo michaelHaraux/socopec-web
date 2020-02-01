@@ -74,17 +74,17 @@ export class VehiculesService {
     );
 }
 removeVehicule(vehicule: Vehicule) {
-  if(vehicule.photo) {
-    const storageRef = firebase.storage().refFromURL(vehicule.photo);
-    storageRef.delete().then(
-      () => {
-        console.log('Photo removed!');
-      },
-      (error) => {
-        console.log('Could not remove photo! : ' + error);
-      }
-    );
-  }
+  // if(vehicule.photo) {
+  //   const storageRef = firebase.storage().refFromURL(vehicule.photo);
+  //   storageRef.delete().then(
+  //     () => {
+  //       console.log('Photo removed!');
+  //     },
+  //     (error) => {
+  //       console.log('Could not remove photo! : ' + error);
+  //     }
+  //   );
+  // }
   const vehiculeIndexToRemove = this.vehicules.findIndex(
     (vehiculeEl) => {
       if(vehiculeEl === vehicule) {

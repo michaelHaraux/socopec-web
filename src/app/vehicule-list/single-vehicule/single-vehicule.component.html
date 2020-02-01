@@ -12,10 +12,11 @@
           <h1>ID : {{ vehicule.identifiant }}</h1>
           <h3>Modèle : {{ vehicule.modele }}</h3>
           <h3> Agence : {{ vehicule.agence }}</h3>
-          <h3>Date de fabrication : {{ vehicule.datFab }}</h3>
+          <h3><p>Date de fabrication : {{ vehicule.dateFab }}</p></h3>
+          
           <h3>Puissance : {{ vehicule.puissance }}</h3>
           <h3>Largeur : {{ vehicule.largeur }}</h3>
-          <h3>Longueur : {{ vehicule.hauteur }}</h3>
+          <h3>Hauteur : {{ vehicule.hauteur }}</h3>
           <h3>Statut : {{ vehicule.statut }}</h3>
           <button class="btn btn-success" style="float: right;" (click)="onEditVehicule(id)">Modifier Véhicule</button>
           <button class="btn btn-default" (click)="onBack()">Retour</button>
