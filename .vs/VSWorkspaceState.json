@@ -3,8 +3,12 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\accueil"
+    "\\src\\app\\agent-list\\agent-form",
+    "\\src\\app\\agent-list\\single-agent",
+    "\\src\\app\\auth\\signin",
+    "\\src\\app\\auth\\signup",
+    "\\src\\app\\liste-vehicules"
   ],
-  "SelectedNode": "\\src\\app\\accueil\\accueil.component.html",
+  "SelectedNode": "\\src\\app\\liste-vehicules\\liste-vehicules.component.ts",
   "PreviewInSolutionExplorer": false
 }

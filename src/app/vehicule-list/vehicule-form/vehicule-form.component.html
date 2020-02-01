@@ -9,12 +9,22 @@
       <div id="form">
         <form [formGroup]="vehiculeForm" (ngSubmit)="onSaveVehicule()">
           <div class="form-group">
+            <h4>Ajouter une photo</h4>
+            <input type="file" (change)="detectFiles($event)" class="form-control" accept="image/*">
+            <p class="text-success" *ngIf="fileUploaded">Fichier chargé !</p>
+          </div>
+          <button class="btn btn-default" (click)="onBack()">Retour</button>
+          <button class="btn btn-success" style="float: right;" [disabled]="vehiculeForm.invalid || fileIsUploading"
+                  type="submit">
+            Enregistrer
+          </button>
+          <div class="form-group">
             <label for="identifiant">Identifiant</label>
             <input type="text" id="identifiant" class="form-control" formControlName="identifiant">
           </div>
           <div class="form-group">
             <label for="modele">Modèle</label>
-            <input type="text" id="modele" class="form-control" formControlName="modele" >
+            <input type="text" id="modele" class="form-control" formControlName="modele">
           </div>
           <div class="form-group">
             <label for="dateFab">Date de fabrication</label>
@@ -40,7 +50,7 @@
             <label for="agence">Agence</label>
             <input type="text" id="agence" class="form-control" formControlName="agence">
           </div>
-      
+
           <button class="btn btn-danger" (click)="onBack()">Annuler</button>
           <button class="btn btn-success" style="float: right;" [disabled]="vehiculeForm.invalid" type="submit">
             Enregistrer
