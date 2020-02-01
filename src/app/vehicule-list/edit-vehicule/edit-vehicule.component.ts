@@ -18,7 +18,8 @@ export class EditVehiculeComponent implements OnInit {
   fileUrl: string;
   fileUploaded = false;
   id: number;
-
+  pret : boolean;
+  add: boolean;
   constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private vehiculesService: VehiculesService,
     private router: Router) { }
 
@@ -39,6 +40,7 @@ export class EditVehiculeComponent implements OnInit {
       poids:'',
       puissance:'',
       agence : '',
+      add:'',
     });
     this.vehicule = new Vehicule('', '');
     const id = this.route.snapshot.params['id'];
@@ -46,7 +48,7 @@ export class EditVehiculeComponent implements OnInit {
     this.vehiculesService.getSingleVehicule(+id).then(
       (vehicule: Vehicule) => {
         this.vehicule = vehicule;
-
+        this.pret = vehicule.add;
         this.vehiculeForm = this.formBuilder.group({
           photo: this.vehicule.photo,
           identifiant: [this.vehicule.identifiant, Validators.required],
@@ -57,6 +59,7 @@ export class EditVehiculeComponent implements OnInit {
           poids: this.vehicule.poids,
           puissance: this.vehicule.puissance,
           agence: this.vehicule.agence,
+          add : this.vehicule.add,
         });
 
       }
@@ -68,35 +71,9 @@ export class EditVehiculeComponent implements OnInit {
     this.vehiculesService.removeVehicule(vehicule);
 
   }
-  // onSaveVehicule(vehicule: Vehicule) {
-
-
-  //   const identifiant = this.vehiculeForm.get('identifiant').value;
-
-  //   const modele = this.vehiculeForm.get('modele').value;
-  //   const dateFab = this.vehiculeForm.get('dateFab').value;
-  //   const hauteur = this.vehiculeForm.get('hauteur').value;
-  //   const largeur = this.vehiculeForm.get('largeur').value;
-  //   const poids = this.vehiculeForm.get('poids').value;
-  //   const puissance = this.vehiculeForm.get('puissance').value;
-  //   const agence = this.vehiculeForm.get('agence').value;
-
-  //   const newVehicule = new Vehicule(identifiant, modele);
-  //   newVehicule.dateFab = dateFab;
-  //   newVehicule.hauteur = hauteur;
-  //   newVehicule.largeur = largeur;
-  //   newVehicule.poids = poids;
-  //   newVehicule.puissance = puissance;
-  //   newVehicule.dateFab = dateFab;
-  //   newVehicule.agence = agence;
-
-  //   if (this.fileUrl && this.fileUrl !== '') {
-  //     newVehicule.photo = this.fileUrl;
-  //   }
-  //   this.vehiculesService.createNewVehicule(newVehicule);
-  //   this.router.navigate(['/vehicules']);
-  // }
-
+  toggleVisibility(e){
+    this.add= e.target.checked;
+  }
   onEditVehicule(vehicule: Vehicule) {
     this.vehiculesService.removeVehicule(vehicule);
     console.log('Mise à jour ...');
@@ -109,7 +86,7 @@ export class EditVehiculeComponent implements OnInit {
     const poids = this.vehiculeForm.get('poids').value;
     const puissance = this.vehiculeForm.get('puissance').value;
     const agence = this.vehiculeForm.get('agence').value;
-
+   
     const newVehicule = new Vehicule(identifiant, modele);
     newVehicule.dateFab = dateFab;
     newVehicule.hauteur = hauteur;
@@ -118,6 +95,7 @@ export class EditVehiculeComponent implements OnInit {
     newVehicule.puissance = puissance;
     newVehicule.photo = photo;
     newVehicule.agence = agence;
+    newVehicule.add = this.add;
 
     if (this.fileUrl && this.fileUrl !== '') {
       newVehicule.photo = this.fileUrl;

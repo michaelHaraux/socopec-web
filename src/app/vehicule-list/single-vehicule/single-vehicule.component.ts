@@ -14,6 +14,7 @@ export class SingleVehiculeComponent implements OnInit {
   
   vehicule: Vehicule;
   id : number;
+  droitAdd : boolean;
   constructor(private route: ActivatedRoute, private vehiculesService: VehiculesService,
               private router: Router) {}
 
@@ -24,6 +25,11 @@ export class SingleVehiculeComponent implements OnInit {
     this.vehiculesService.getSingleVehicule(+id).then(
       (vehicule: Vehicule) => {
         this.vehicule = vehicule;
+        if (this.vehicule.add) {
+          this.droitAdd = true
+        } else {
+          this.droitAdd = false;
+        }
       }
     );
   }

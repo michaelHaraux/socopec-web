@@ -8,10 +8,7 @@
       <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
       <div id="form">
         <form [formGroup]="vehiculeForm" (ngSubmit)="onEditVehicule()">
-          <div class="form-group">
-            <label for="photo">Photo</label>
-            <input type="text" id="photo" class="form-control" formControlName="photo" value="{{vehicule.photo}}">
-          </div>
+    
           <div class="form-group">
             <label for="identifiant">Identifiant</label>
             <input type="text" id="identifiant" class="form-control" formControlName="identifiant" value="{{vehicule.identifiant}}">
@@ -44,7 +41,11 @@
             <label for="agence">Agence</label>
             <input type="text" id="agence" class="form-control" formControlName="agence" value="{{vehicule.agence}}">
           </div>
-      
+          <div class="form-group">
+            <h4>Ajouter une photo</h4>
+            <input type="file" (change)="detectFiles($event)" class="form-control" accept="image/*">
+            <p class="text-success" *ngIf="fileUploaded">Fichier chargé !</p>
+          </div>
           <button class="btn btn-danger" (click)="onBack()">Annuler</button>
        
           <button    class="btn btn-success"  style="float: right;"  type="submit">
@@ -53,36 +54,41 @@
         </form>
       </div>
     </div>
-    <!-- <div class="DivDroite">
+    <div class="DivDroite">
       <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
   
       <div id="checkboxDroite">
   
-        <p>Gestion des droits</p>
+         <p>Gestion des statuts</p>
    
         <form [formGroup]="agentForm" (ngSubmit)="onSaveAgent()">
 
           <div class="form-group">
-            <label class="radio-inline" for="add">
-              <input type="checkbox" id="add" [value]="add" (change)="toggleVisibility($event)" class="form-control"
-                FormControlName="add"> Ajout d'un véhicule
+            <label  *ngIf="!pret" class="radio-inline" for="add">
+              <input  type="checkbox" id="pret" [value]="pret" (change)="toggleVisibility($event)" class="form-control"
+                FormControlName="add" > Prêt
+            </label>
+            <label *ngIf="pret" class="radio-inline" for="add">
+              <input  type="checkbox" id="pret" [value]="pret" (change)="toggleVisibility($event)" class="form-control"
+                FormControlName="add" checked> Prêt
+            </label>
+          </div>
+      
+          <br>
+          <div>
+            <label class="radio-inline">
+              <input type="checkbox" name="optradio" value="delete"> Location
             </label>
           </div>
           <br>
           <div>
             <label class="radio-inline">
-              <input type="checkbox" name="optradio" value="delete"> Suppression d'un véhicule
-            </label>
-          </div>
-          <br>
-          <div>
-            <label class="radio-inline">
-              <input type="checkbox" name="optradio" value="edit"> Modification d'un véhicule
+              <input type="checkbox" name="optradio" value="edit"> Démonstration
             </label>
           </div>
         </form>
       </div>
-   -->
+   
     </div>
   
 

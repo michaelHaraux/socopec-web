@@ -20,7 +20,7 @@ export class VehiculeFormComponent implements OnInit {
   fileIsUploading = false;
   fileUrl: string;
   fileUploaded = false;
- 
+  add =false;
   
 
   constructor(private route: ActivatedRoute,private formBuilder: FormBuilder, private vehiculesService: VehiculesService,
@@ -42,6 +42,7 @@ export class VehiculeFormComponent implements OnInit {
       poids:'',
       puissance:'',
       agence : '',
+      add:'',
     });
   }
   
@@ -63,6 +64,7 @@ export class VehiculeFormComponent implements OnInit {
     newVehicule.puissance = puissance;
     newVehicule.dateFab = dateFab;
     newVehicule.agence = agence;
+    newVehicule.add = this.add;
 
     if(this.fileUrl && this.fileUrl !== '') {
       newVehicule.photo = this.fileUrl;
@@ -80,6 +82,9 @@ export class VehiculeFormComponent implements OnInit {
       }
     );
     
+}
+toggleVisibility(e){
+  this.add= e.target.checked;
 }
 detectFiles(event) {
   this.onUploadFile(event.target.files[0]);

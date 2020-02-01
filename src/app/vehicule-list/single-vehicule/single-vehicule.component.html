@@ -18,11 +18,17 @@
           <h3>Largeur : {{ vehicule.largeur }}</h3>
           <h3>Hauteur : {{ vehicule.hauteur }}</h3>
           <h3>Statut : {{ vehicule.statut }}</h3>
+          <h3><span *ngIf="!droitAdd">Prêt :  Véhicule disponible</span></h3>
+          <h3> <span *ngIf="droitAdd">Prêt : Véhicule en prêt</span></h3>
           <button class="btn btn-success" style="float: right;" (click)="onEditVehicule(id)">Modifier Véhicule</button>
           <button class="btn btn-default" (click)="onBack()">Retour</button>
         </div>
       </div>
   
   
+    </div>
+    <div style="min-width: 30%;">
+
+      
     </div>
   </div>

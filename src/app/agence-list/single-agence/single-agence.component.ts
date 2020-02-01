@@ -13,6 +13,7 @@ export class SingleAgenceComponent implements OnInit {
 
 
   agence: Agence;
+  id : number;
 
   constructor(private route: ActivatedRoute, private agencesService: AgencesService,
               private router: Router) {}
@@ -20,13 +21,16 @@ export class SingleAgenceComponent implements OnInit {
   ngOnInit() {
     this.agence = new Agence('', '');
     const id = this.route.snapshot.params['id'];
+    this.id = id;
     this.agencesService.getSingleAgence(+id).then(
       (agence: Agence) => {
         this.agence = agence;
       }
     );
   }
-
+  onEditAgence(id: number) {
+    this.router.navigate(['/agences', 'edit',this.id]);
+}
   onBack() {
     this.router.navigate(['/agences']);
   }
