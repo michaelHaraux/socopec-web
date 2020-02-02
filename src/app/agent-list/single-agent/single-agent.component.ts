@@ -11,7 +11,7 @@ import * as firebase from 'firebase';
 })
 export class SingleAgentComponent implements OnInit {
 
-
+  id : number;
   agent: Agent;
   droitAdd: boolean;
   constructor(private route: ActivatedRoute, private agentsService: AgentsService,
@@ -20,6 +20,7 @@ export class SingleAgentComponent implements OnInit {
   ngOnInit() {
     this.agent = new Agent('', '');
     const id = this.route.snapshot.params['id'];
+    this.id = id;
     this.agentsService.getSingleAgent(+id).then(
       (agent: Agent) => {
         this.agent = agent;
@@ -33,7 +34,9 @@ export class SingleAgentComponent implements OnInit {
     );
 
   }
-
+  onEditAgent(id: number) {
+    this.router.navigate(['/agents', 'edit',this.id]);
+}
   onBack() {
     this.router.navigate(['/agents']);
   }

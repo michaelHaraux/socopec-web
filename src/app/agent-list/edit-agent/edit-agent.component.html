@@ -1,1 +1,84 @@
-<p>edit-agent works!</p>
+<div id="principale">
+    <div class=DivGauche>
+      Modifier l'Agent
+  
+    </div>
+    <div class="DivCentrale">
+  
+      <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
+      <div id="form">
+        <form [formGroup]="agentForm" (ngSubmit)="onEditAgent()">
+          <div class="form-group">
+            <label for="title">Nom</label>
+            <input type="text" id="title" class="form-control" formControlName="title" value="{{agent.title}}">
+          </div>
+          <div class="form-group">
+            <label for="author">Prénom</label>
+            <input type="text" id="author" class="form-control" formControlName="author" value="{{agent.author}}">
+          </div>
+          <div class="form-group">
+            <label for="email">Adresse mail</label>
+            <input type="email" id="email" class="form-control" formControlName="email" value="{{agent.email}}">
+          </div>
+          <div class="form-group">
+            <label for="synopsis">Adresse</label>
+            <textarea id="synopsis" class="form-control" formControlName="synopsis" value="{{agent.synopsis}}">
+            </textarea>
+          </div>
+          <div class="form-group">
+            <label for="tel">Numéro de téléphone</label>
+            <input id="tel" class="form-control" formControlName="tel" value="{{agent.tel}}">
+  
+          </div>
+          <!-- <button class="btn btn-danger" (click)="onBack()">Annuler</button>
+          <button class="btn btn-success" style="float: right;" [disabled]="agentForm.invalid" type="submit">
+            Enregistrer
+          </button> -->
+                 <div class="form-group">
+            <h4>Ajouter une photo</h4>
+            <input type="file" (change)="detectFiles($event)" class="form-control" accept="image/*">
+            <p class="text-success" *ngIf="fileUploaded">Fichier chargé !</p>
+          </div>
+          <button class="btn btn-default" (click)="onBack()">Retour</button>
+          <button class="btn btn-success" style="float: right;" [disabled]="agentForm.invalid || fileIsUploading"
+            type="submit">
+            Enregistrer
+          </button>
+  
+        </form>
+      </div>
+    </div>
+    <div class="DivDroite">
+      <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
+  
+      <div id="checkboxDroite">
+  
+        <p>Gestion des droits</p>
+   
+        <form [formGroup]="agentForm" (ngSubmit)="onEditAgent()">
+  
+          <div class="form-group">
+            <label class="radio-inline" for="add">
+              <input type="checkbox" id="add" [value]="add" (change)="toggleVisibility($event)" class="form-control"
+                FormControlName="add"> Ajout d'un véhicule
+            </label>
+          </div>
+          <br>
+          <div>
+            <label class="radio-inline">
+              <input type="checkbox" name="optradio" value="delete"> Suppression d'un véhicule
+            </label>
+          </div>
+          <br>
+          <div>
+            <label class="radio-inline">
+              <input type="checkbox" name="optradio" value="edit"> Modification d'un véhicule
+            </label>
+          </div>
+        </form>
+      </div>
+  
+    </div>
+  
+  </div>
+  

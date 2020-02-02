@@ -16,11 +16,15 @@
         <h2>Adresse : {{ agent.synopsis }}</h2>
         <h3>Téléphone : {{ agent.tel }}</h3>
         <h3>Droit : <span *ngIf="droitAdd"> Ajout</span><span *ngIf="!droitAdd"> Pas de droit</span></h3>
-       
+        <button class="btn btn-success" (click)="onEditAgent(id)" style="float: right;" >Modifier l'agent</button>
         <button class="btn btn-default" (click)="onBack()">Retour</button>
       </div>
     </div>
 
 
+  </div>
+  <div style="min-width: 25%;">
+
+      
   </div>
 </div>

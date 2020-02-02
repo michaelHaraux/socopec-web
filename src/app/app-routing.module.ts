@@ -17,6 +17,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import {EditVehiculeComponent} from './vehicule-list/edit-vehicule/edit-vehicule.component'
 import {EditAgenceComponent} from './agence-list/edit-agence/edit-agence.component'
+import {EditAgentComponent} from './agent-list/edit-agent/edit-agent.component'
 
   const appRoutes: Routes = [
     { path: 'auth/signup', component: SignupComponent },
@@ -25,6 +26,7 @@ import {EditAgenceComponent} from './agence-list/edit-agence/edit-agence.compone
     { path: 'accueil/agents', canActivate: [AuthGuardService], component: AgentListComponent },
     { path: 'agents/new', canActivate: [AuthGuardService], component: AgentFormComponent },
     { path: 'agents/view/:id', canActivate: [AuthGuardService], component: SingleAgentComponent },
+    { path: 'agents/edit/:id', canActivate: [AuthGuardService], component: EditAgentComponent },
 
     { path: 'vehicules', canActivate: [AuthGuardService], component: VehiculeListComponent },
     { path: 'accueil/vehicules', canActivate: [AuthGuardService], component: VehiculeListComponent },
