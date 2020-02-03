@@ -45,12 +45,12 @@
           </label>
         </div>
         <div><div>Rechercher par modèle :</div><input type="text"></div>
-        <div><div>Ajouter un véhicule</div><div style="width: 30px;"><input type="image" alt="Ajout" width="25px" (click)="setAddVehic()" [src]="cheminImage"></div></div>
+        <div><div>Ajouter un véhicule</div><div style="width: 30px;"><input type="image" alt="Ajout" width="25px" (click)="onNewVehicule()" src="https://cdn3.iconfinder.com/data/icons/buttons/512/Icon_11-512.png"></div></div>
         
       </div>
       <div>
         <table style=" border:solid 1px black; margin: 10px;">
-          <thead style="background-color: aquamarine;" >
+          <thead style="background-color:#D3E5E5" >
             <tr >
               <th scope="col" style=" border:solid 1px black">Identifiant</th>
               <th scope="col" style=" border:solid 1px black">Miniature</th>
@@ -59,6 +59,7 @@
               <th scope="col" style=" border:solid 1px black">Statut</th>
               <th scope="col" style=" border:solid 1px black">Date de fabrication</th>
               <th scope="col" style=" border:solid 1px black"> Détails</th>
+              <th scope="col" style=" border:solid 1px black"> Suppression</th>
             </tr>
           </thead>
           <tr  *ngFor="let vehicule of vehicules ; let i = index" style=" border:solid 1px black">
@@ -69,15 +70,22 @@
             <td style=" border:solid 1px black">{{ vehicule.agence }}</td>
             <td style=" border:solid 1px black">{{ vehicule.add }}</td>
             <td style=" border:solid 1px black">{{ vehicule.dateFab }}</td>
-            <td>
-              <input type="image" alt="Ajout" width="10%"
-                src="https://c7.uihere.com/files/496/449/244/computer-icons-search-button.jpg"  (click)="onViewVehicule(i)">
+   
+            <td style="max-width: 50px;">
+              <button (click)="onViewVehicule(i)" style="max-width: 90%;" ><img style="max-width: 20px;"  src="https://c7.uihere.com/files/496/449/244/computer-icons-search-button.jpg" alt="suppression" ></button>
+
+                  
+            </td>
+            <td style="max-width: 50px;">
+              <button (click)="onDeleteVehicule(i)" style="max-width: 90%;" ><img style="max-width: 20px;" src="assets/img/deleteVehicule.png" alt="suppression" ></button>
+
+                  
             </td>
           </tr>
         </table>
       </div>
       <button class="btn btn-default" (click)="onBack()">Retour accueil</button>
-      <button class="btn btn-success" style="float: right;" (click)="onNewVehicule()">Nouveau Véhicule</button>
+      <!-- <button class="btn btn-success" style="float: right;" (click)="onNewVehicule()">Nouveau Véhicule</button> -->
     </div>
   </div>
   

@@ -68,24 +68,24 @@
           <div class="form-group">
             <label  *ngIf="!pret" class="radio-inline" for="add">
               <input  type="checkbox" id="pret" [value]="pret" (change)="toggleVisibility($event)" class="form-control"
-                FormControlName="add" > Prêt
+                FormControlName="add" style="max-width: 14px;" > Prêt
             </label>
             <label *ngIf="pret" class="radio-inline" for="add">
               <input  type="checkbox" id="pret" [value]="pret" (change)="toggleVisibility($event)" class="form-control"
-                FormControlName="add" checked> Prêt
+                FormControlName="add" checked style="max-width: 14px;"> Prêt
             </label>
           </div>
       
           <br>
           <div>
             <label class="radio-inline">
-              <input type="checkbox" name="optradio" value="delete"> Location
+              <input type="checkbox" name="optradio" value="delete" class="form-control" style="max-width: 14px;"> Location
             </label>
           </div>
           <br>
           <div>
             <label class="radio-inline">
-              <input type="checkbox" name="optradio" value="edit"> Démonstration
+              <input type="checkbox" name="optradio" value="edit" class="form-control" style="max-width: 14px;"> Démonstration
             </label>
           </div>
         </form>
