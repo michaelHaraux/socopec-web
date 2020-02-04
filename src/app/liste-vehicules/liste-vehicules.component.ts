@@ -68,7 +68,34 @@ export class LISTEVEHICULESComponent implements OnInit {
 
   trierPar(tri:string)
   {
-    this.HTTPSERV.VEHICULESBDD.sort((a,b) => (a.modele < b.modele) ? 1 : -1);
+    switch(tri) { 
+      case "modele": { 
+         this.HTTPSERV.VEHICULESBDD.sort((a,b) => (a.modele > b.modele) ? 1 : -1);
+         break; 
+      } 
+      case "agence": { 
+         this.HTTPSERV.VEHICULESBDD.sort((a,b) => (a.agence > b.agence) ? 1 : -1);
+         break; 
+      } 
+      case "statut": { 
+        this.HTTPSERV.VEHICULESBDD.sort((a,b) => (a.statut > b.statut) ? 1 : -1);
+        break; 
+      } 
+      case "puissance": { 
+        this.HTTPSERV.VEHICULESBDD.sort((a,b) => (a.puissance > b.puissance) ? 1 : -1);
+        break; 
+      } 
+      case "supprime": { 
+        this.HTTPSERV.VEHICULESBDD.sort((a,b) => (a.supprime > b.supprime) ? 1 : -1);
+        break; 
+      } 
+      default: { 
+         this.HTTPSERV.VEHICULESBDD.sort((a,b) => (a.modele > b.modele) ? 1 : -1);
+         break; 
+      } 
+   } 
+
+
     //this.HTTPSERV.VEHICULESBDD.sort((a,b) => (a.modele < b.modele) ? 1 : ((b.modele < a.modele) ? -1 : 0));
   }
   onBack() {
