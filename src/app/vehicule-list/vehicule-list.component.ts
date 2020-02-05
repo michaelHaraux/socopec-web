@@ -48,5 +48,21 @@ export class VehiculeListComponent implements OnInit, OnDestroy {
     this.router.navigate(['/accueil']);
   }
   
-
+  trierPar(tri:string)
+  {
+    switch(tri) { 
+      case "modele": { 
+         this.vehiculesService.vehicules.sort((a,b) => (a.modele > b.modele) ? 1 : -1);
+         break; 
+      } 
+      case "agence": { 
+        this.vehiculesService.vehicules.sort((a,b) => (a.agence > b.agence) ? 1 : -1);
+         break; 
+      } 
+      default: { 
+         this.vehiculesService.vehicules.sort((a,b) => (a.modele > b.modele) ? 1 : -1);
+         break; 
+      } 
+   } 
+}
 }
