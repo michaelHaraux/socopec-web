@@ -46,6 +46,7 @@ export class EditVehiculeComponent implements OnInit {
       agence : '',
       add:'',
     });
+    
     this.vehicule = new Vehicule('', '');
     const id = this.route.snapshot.params['id'];
     this.idEdit = id;
@@ -67,14 +68,13 @@ export class EditVehiculeComponent implements OnInit {
           agence: this.vehicule.agence,
           add : this.vehicule.add,
         });
-
       }
     );
 
   }
 
   onDeleteVehicule(vehicule : Vehicule) {
-    //if(confirm("Etes vous sur de vouloir supprimer ce véhicule" +vehicule)) 
+    //if(confirm("Etes vous sur de vouloir supprimer ce véhicule")) 
       console.log("Implement delete functionality here");
      // console.log(vehicule);
       this.vehiculesService.removeVehicule(vehicule);
@@ -106,6 +106,7 @@ export class EditVehiculeComponent implements OnInit {
     newVehicule.puissance = puissance;
     newVehicule.photo = photo;
     newVehicule.agence = agence;
+    
     newVehicule.add = this.add;
 
     if (this.fileUrl && this.fileUrl !== '') {
