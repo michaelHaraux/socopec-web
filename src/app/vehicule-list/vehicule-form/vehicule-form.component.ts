@@ -19,16 +19,23 @@ export class VehiculeFormComponent implements OnInit {
   vehiculeForm: FormGroup;
   fileIsUploading = false;
   fileUrl: string;
+  listeFilesUrl: string[] = [];
+  //listeFilesUrl: Array<String> = [];
+  //listeFilesUrl : 
+  //[
+    //{Photo1:string},
+    //{Photo2:string},
+    //{Photo3:string}
+  //];
+  
   fileUploaded = false;
-  add =false;
+  add = false;
   
 
   constructor(private route: ActivatedRoute,private formBuilder: FormBuilder, private vehiculesService: VehiculesService,
               private router: Router) { }
               
   ngOnInit() {
-   
-  
     this.initForm();
   }
 
@@ -65,29 +72,48 @@ export class VehiculeFormComponent implements OnInit {
     newVehicule.dateFab = dateFab;
     newVehicule.agence = agence;
     newVehicule.add = this.add;
-
+    while (this.listeFilesUrl.length !=3)
+    {
+      this.listeFilesUrl.push('');
+    }
+    newVehicule.addPhotos(this.listeFilesUrl)
+    this.listeFilesUrl=[];
     if(this.fileUrl && this.fileUrl !== '') {
       newVehicule.photo = this.fileUrl;
     }
     this.vehiculesService.createNewVehicule(newVehicule);
     this.router.navigate(['/vehicules']);
   }
-  onUploadFile(file: File) {
+  onUploadFile(file: File) 
+  {
     this.fileIsUploading = true;
     this.vehiculesService.uploadFile(file).then(
-      (url: string) => {
+      (url: string) => 
+      {
         this.fileUrl = url;
+        this.listeFilesUrl.push(this.fileUrl);
         this.fileIsUploading = false;
         this.fileUploaded = true;
       }
     );
-    
 }
 toggleVisibility(e){
   this.add= e.target.checked;
 }
 detectFiles(event) {
   this.onUploadFile(event.target.files[0]);
+}
+
+detectMultipleFiles(event) {
+
+  if (event.target.files.length < 4)
+  {
+    for (var i = 0; i < event.target.files.length; i++) 
+    {
+      this.onUploadFile(event.target.files[i]);
+    }
+  }
+  //this.onUploadFile(event.target.files[0]);
 }
 
   onBack() {

@@ -1,94 +1,94 @@
 <div id="principale">
-    <div class=DivGauche>
-      Nouveau Véhicule
-  
-    </div>
-    <div class="DivCentrale">
-  
-      <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
-      <div id="form">
-        <form [formGroup]="vehiculeForm" (ngSubmit)="onSaveVehicule()">
+  <div class=DivGauche>
+    Nouveau Véhicule
 
-          <!-- <button class="btn btn-default" (click)="onBack()">Retour</button>
-          <button class="btn btn-success" style="float: right;" [disabled]="vehiculeForm.invalid || fileIsUploading"
-                  type="submit">
-            Enregistrer
-          </button> -->
-          <div class="form-group">
-            <label for="identifiant">Identifiant</label>
-            <input type="text" id="identifiant" class="form-control" formControlName="identifiant">
-          </div>
-          <div class="form-group">
-            <label for="modele">Modèle</label>
-            <input type="text" id="modele" class="form-control" formControlName="modele">
-          </div>
-          <div class="form-group">
-            <label for="dateFab">Date de fabrication</label>
-            <input type="text" id="dateFab" class="form-control" formControlName="dateFab">
-          </div>
-          <div class="form-group">
-            <label for="hauteur">Hauteur</label>
-            <input type="text" id="hauteur" class="form-control" formControlName="hauteur">
-          </div>
-          <div class="form-group">
-            <label for="largeur">Largeur</label>
-            <input type="text" id="largeur" class="form-control" formControlName="largeur">
-          </div>
-          <div class="form-group">
-            <label for="poids">Poids</label>
-            <input type="number" id="poids" class="form-control" formControlName="poids">
-          </div>
-          <div class="form-group">
-            <label for="puissance">Puissance</label>
-            <input type="number" id="puissance" class="form-control" formControlName="puissance">
-          </div>
-          <div class="form-group">
-            <label for="agence">Agence</label>
-            <input type="text" id="agence" class="form-control" formControlName="agence">
-          </div>
-          <div class="form-group">
-            <h4>Ajouter une photo</h4>
-            <input type="file" (change)="detectFiles($event)" class="form-control" accept="image/*">
-            <p class="text-success" *ngIf="fileUploaded">Fichier chargé !</p>
-          </div>
-          <button class="btn btn-default" (click)="onBack()">Retour</button>
-          <button class="btn btn-success" style="float: right;" [disabled]="vehiculeForm.invalid || fileIsUploading"
-            type="submit">
-            Enregistrer
-          </button>
-        </form>
-      </div>
-    </div>
-    <div class="DivDroite">
-      <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
-  
-      <div id="checkboxDroite">
-  
-        <p>Gestion des statuts</p>
-   
-        <form [formGroup]="vehiculeForm" (ngSubmit)="onSaveVehicule()">
+  </div>
+  <div class="DivCentrale">
 
-          <div class="form-group">
-            <label class="radio-inline" for="add">
-              <input type="checkbox" id="pret" [value]="pret" (change)="toggleVisibility($event)" class="form-control"
-                FormControlName="add" style="max-width: 14px;"> Prêt
-            </label>
-          </div>
-          <br>
-          <div>
-            <label class="radio-inline">
-              <input type="checkbox" name="optradio" value="delete" class="form-control" style="max-width: 14px;"> Location
-            </label>
-          </div>
-          <br>
-          <div>
-            <label class="radio-inline">
-              <input type="checkbox" name="optradio" value="edit" class="form-control" style="max-width: 14px;"> Démonstration
-            </label>
-          </div>
-        </form>
-      </div>
-   
-    
+    <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
+    <div id="form">
+      <form [formGroup]="vehiculeForm" (ngSubmit)="onSaveVehicule()">
+
+        <!-- <button class="btn btn-default" (click)="onBack()">Retour</button>
+        <button class="btn btn-success" style="float: right;" [disabled]="vehiculeForm.invalid || fileIsUploading"
+                type="submit">
+          Enregistrer
+        </button> -->
+        <div class="form-group">
+          <label for="identifiant">Identifiant</label>
+          <input type="text" id="identifiant" class="form-control" formControlName="identifiant">
+        </div>
+        <div class="form-group">
+          <label for="modele">Modèle</label>
+          <input type="text" id="modele" class="form-control" formControlName="modele">
+        </div>
+        <div class="form-group">
+          <label for="dateFab">Date de fabrication</label>
+          <input type="text" id="dateFab" class="form-control" formControlName="dateFab">
+        </div>
+        <div class="form-group">
+          <label for="hauteur">Hauteur</label>
+          <input type="text" id="hauteur" class="form-control" formControlName="hauteur">
+        </div>
+        <div class="form-group">
+          <label for="largeur">Largeur</label>
+          <input type="text" id="largeur" class="form-control" formControlName="largeur">
+        </div>
+        <div class="form-group">
+          <label for="poids">Poids</label>
+          <input type="number" id="poids" class="form-control" formControlName="poids">
+        </div>
+        <div class="form-group">
+          <label for="puissance">Puissance</label>
+          <input type="number" id="puissance" class="form-control" formControlName="puissance">
+        </div>
+        <div class="form-group">
+          <label for="agence">Agence</label>
+          <input type="text" id="agence" class="form-control" formControlName="agence">
+        </div>
+        <div class="form-group">
+          <h4>Ajouter une photo (3 maximum)</h4>
+          <input type="file" id="files" (change)="detectMultipleFiles($event)" class="form-control" accept="image/*" multiple>
+          <p class="text-success" *ngIf="fileUploaded">Fichier chargé !</p>
+        </div>
+        <button class="btn btn-default" (click)="onBack()">Retour</button>
+        <button class="btn btn-success" style="float: right;" [disabled]="vehiculeForm.invalid || fileIsUploading"
+          type="submit">
+          Enregistrer
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="DivDroite">
+    <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
+
+    <div id="checkboxDroite">
+
+      <p>Gestion des statuts</p>
+ 
+      <form [formGroup]="vehiculeForm" (ngSubmit)="onSaveVehicule()">
+
+        <div class="form-group">
+          <label class="radio-inline" for="add">
+            <input type="checkbox" id="pret" [value]="pret" (change)="toggleVisibility($event)" class="form-control"
+              FormControlName="add" style="max-width: 14px;"> Prêt
+          </label>
+        </div>
+        <br>
+        <div>
+          <label class="radio-inline">
+            <input type="checkbox" name="optradio" value="delete" class="form-control" style="max-width: 14px;"> Location
+          </label>
+        </div>
+        <br>
+        <div>
+          <label class="radio-inline">
+            <input type="checkbox" name="optradio" value="edit" class="form-control" style="max-width: 14px;"> Démonstration
+          </label>
+        </div>
+      </form>
+    </div>
+ 
   
+
 </div>
