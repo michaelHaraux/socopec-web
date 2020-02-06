@@ -45,8 +45,9 @@ export class EditVehiculeComponent implements OnInit {
       puissance:'',
       agence : '',
       add:'',
+      recupAdd:''
     });
-    
+
     this.vehicule = new Vehicule('', '');
     const id = this.route.snapshot.params['id'];
     this.idEdit = id;
@@ -56,6 +57,7 @@ export class EditVehiculeComponent implements OnInit {
         
         this.vehicule = vehicule;
         this.pret = vehicule.add;
+        console.log("3",this.pret);
         this.vehiculeForm = this.formBuilder.group({
           photo: this.vehicule.photo,
           identifiant: [this.vehicule.identifiant, Validators.required],
@@ -67,7 +69,9 @@ export class EditVehiculeComponent implements OnInit {
           puissance: this.vehicule.puissance,
           agence: this.vehicule.agence,
           add : this.vehicule.add,
+          recupAdd : this.vehicule.add,
         });
+        
       }
     );
 
@@ -97,6 +101,7 @@ export class EditVehiculeComponent implements OnInit {
     const poids = this.vehiculeForm.get('poids').value;
     const puissance = this.vehiculeForm.get('puissance').value;
     const agence = this.vehiculeForm.get('agence').value;
+    const recupAdd = this.vehiculeForm.get('recupAdd').value;
    
     const newVehicule = new Vehicule(identifiant, modele);
     newVehicule.dateFab = dateFab;
@@ -106,8 +111,14 @@ export class EditVehiculeComponent implements OnInit {
     newVehicule.puissance = puissance;
     newVehicule.photo = photo;
     newVehicule.agence = agence;
+    console.log("1", this.add);
+    console.log("2",this.pret);
+    if(this.add != null){
+      newVehicule.add = this.add;
+    }else{
+      newVehicule.add = recupAdd;
+    }
     
-    newVehicule.add = this.add;
 
     if (this.fileUrl && this.fileUrl !== '') {
       newVehicule.photo = this.fileUrl;

@@ -10,6 +10,7 @@ export class Vehicule {
     puissance : number;
     agence : string;
     add:boolean;
+    recupAdd:boolean;
     
     constructor(public identifiant: string, public modele: string) {
     }

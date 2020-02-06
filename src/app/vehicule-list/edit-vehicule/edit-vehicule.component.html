@@ -41,6 +41,11 @@
             <label for="agence">Agence</label>
             <input type="text" id="agence" class="form-control" formControlName="agence" value="{{vehicule.agence}}">
           </div>
+          
+          <div class="form-group" style="visibility: hidden;">
+            <label for="recupadd">RecupAdd</label>
+            <input type="text" id="recupadd" class="form-control" value="{{vehicule.add}}">
+          </div>
 
           <div class="form-group">
             <h4>Ajouter une photo</h4>
@@ -63,7 +68,7 @@
   
          <p>Gestion des statuts</p>
         
-        <form [formGroup]="vehiculeForm" >
+        <form [formGroup]="vehiculeForm" (ngSubmit)="onSaveVehicule()">
 
           <div class="form-group">
             <label  *ngIf="!pret" class="radio-inline" for="add">
