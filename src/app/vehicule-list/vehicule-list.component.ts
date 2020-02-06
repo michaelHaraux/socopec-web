@@ -24,6 +24,7 @@ export class VehiculeListComponent implements OnInit, OnDestroy {
       (vehicules: Vehicule[]) => {
         this.vehicules = vehicules;
         
+        
       }
     );
     this.vehiculesService.emitVehicules();

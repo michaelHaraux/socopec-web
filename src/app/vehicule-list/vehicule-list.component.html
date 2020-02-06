@@ -1,29 +1,12 @@
 
    
-<div id="principale">
+<div id="principale" class="scrolling-wrapper">
     <div class=DivGauche>
       Véhicules
     </div>
     <div class="DivCentrale">
       <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
       <div class="list-group">
-<!--         <button class="list-group-item"
-                *ngFor="let vehicule of vehicules ; let i = index"
-                (click)="onViewVehicule(i)">
-          <h3 class="list-group-item-heading">
-           
-            <div class="btn btn-default pull-right" (click)="onDeleteVehicule(vehicule)">
-              <span class="glyphicon glyphicon-minus"></span>
-            </div>
-          </h3>
-          <p class="list-group-item-text">Id : {{ vehicule.identifiant }}</p>
-          <p class="list-group-item-text">{{ vehicule.miniature }}</p>
-          <p class="list-group-item-text">Modèle : {{ vehicule.modele }}</p>
-          <p class="list-group-item-text">Agence : {{ vehicule.agence }}</p>
-          <p class="list-group-item-text">Status : {{ vehicule.add }}</p>
-          <p class="list-group-item-text">Date : {{ vehicule.dateFab }}</p>
-         
-        </button> -->
       </div>
       <h2>Trier par :</h2>
       <div id="selectTri">
@@ -49,7 +32,7 @@
         
       </div>
       <div>
-        <table style=" border:solid 1px black; margin: 10px;">
+        <table style=" border:solid 1px black; margin: 10px; overflow: auto;">
           <thead style="background-color:#D3E5E5" >
             <tr >
               <th scope="col" style=" border:solid 1px black">Identifiant</th>
@@ -68,7 +51,8 @@
             <td style=" border:solid 1px black">{{ vehicule.miniature }}</td>
             <td style=" border:solid 1px black">{{ vehicule.modele }}</td>
             <td style=" border:solid 1px black">{{ vehicule.agence }}</td>
-            <td style=" border:solid 1px black">{{ vehicule.add }}</td>
+            <td [hidden]="!vehicule.add" style=" border:solid 1px black" >En prêt</td>
+            <td [hidden]="vehicule.add" style=" border:solid 1px black" >Disponible</td>
             <td style=" border:solid 1px black">{{ vehicule.dateFab }}</td>
    
             <td style="max-width: 50px;">

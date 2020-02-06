@@ -14,7 +14,9 @@ export class SingleVehiculeComponent implements OnInit {
   
   vehicule: Vehicule;
   id : number;
-  droitAdd : boolean;
+  enPret : boolean;
+  messEnpret : string;
+
   constructor(private route: ActivatedRoute, private vehiculesService: VehiculesService,
               private router: Router) {}
 
@@ -26,9 +28,11 @@ export class SingleVehiculeComponent implements OnInit {
       (vehicule: Vehicule) => {
         this.vehicule = vehicule;
         if (this.vehicule.add) {
-          this.droitAdd = true
+          this.enPret = true;
+          this.messEnpret ="En prêt";
         } else {
-          this.droitAdd = false;
+          this.enPret = false;
+          this.messEnpret ="Disponible";
         }
       }
     );
