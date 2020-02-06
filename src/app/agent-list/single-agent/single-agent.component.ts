@@ -14,10 +14,27 @@ export class SingleAgentComponent implements OnInit {
   id : number;
   agent: Agent;
   droitAdd: boolean;
+  isAdmin: boolean;
+  isAuth: boolean;
+  utilisateur: string
+
   constructor(private route: ActivatedRoute, private agentsService: AgentsService,
     private router: Router) { }
 
   ngOnInit() {
+    firebase.auth().onAuthStateChanged(
+      (user) => {
+        if (user) {
+          this.isAuth = true;
+          this.utilisateur=user.email
+          if(this.utilisateur=="admin@gmail.com"){
+            this.isAdmin = true;
+          }else{this.isAdmin=false}
+        } else {
+          this.isAuth = false;
+        }
+      }
+    );
     this.agent = new Agent('', '');
     const id = this.route.snapshot.params['id'];
     this.id = id;

@@ -23,6 +23,6 @@
       </button>
     </div>
     <button class="btn btn-default" (click)="onBack()">Retour accueil</button>
-    <button class="btn btn-success" style="float: right;" (click)="onNewAgent()">Nouvel Agent</button>
+    <button class="btn btn-success" style="float: right;" (click)="onNewAgent()" *ngIf="isAdmin">Nouvel Agent</button>
   </div>
 </div>

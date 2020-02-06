@@ -3,6 +3,7 @@ import { AgentsService } from '../services/agents.service';
 import { Agent } from '../models/agent.model';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import * as firebase from 'firebase';
 
 
 @Component({
@@ -14,10 +15,27 @@ export class AgentListComponent implements OnInit, OnDestroy {
 
   agents: Agent[];
   agentsSubscription: Subscription;
+  isAdmin: boolean;
+  isAuth: boolean;
+  utilisateur: string
 
   constructor(private agentsService: AgentsService, private router: Router) {}
 
   ngOnInit() {
+
+    firebase.auth().onAuthStateChanged(
+      (user) => {
+        if (user) {
+          this.isAuth = true;
+          this.utilisateur=user.email
+          if(this.utilisateur=="admin@gmail.com"){
+            this.isAdmin = true;
+          }else{this.isAdmin=false}
+        } else {
+          this.isAuth = false;
+        }
+      }
+    );
     this.agentsSubscription = this.agentsService.agentsSubject.subscribe(
       (agents: Agent[]) => {
         this.agents = agents;
