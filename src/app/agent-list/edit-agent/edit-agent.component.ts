@@ -66,7 +66,7 @@ export class EditAgentComponent implements OnInit {
 
   }
   
-  onEditAgent() {
+  onSaveAgent() {
     this.agentsService.removeAgent(this.agent);
 
     const title = this.agentForm.get('title').value;

@@ -3,6 +3,7 @@ import { Vehicule } from '../../models/vehicule.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VehiculesService } from '../../services/vehicule.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import * as cloneDeep from 'lodash/cloneDeep';
 
 @Component({
   selector: 'app-edit-vehicule',
@@ -11,13 +12,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class EditVehiculeComponent implements OnInit {
 
-
+ 
   vehicule: Vehicule;
   vehiculeForm: FormGroup;
   fileIsUploading = false;
   fileUrl: string;
   fileUploaded = false;
   id: number;
+  idEdit : number;
   pret : boolean;
   add: boolean;
   
@@ -46,9 +48,11 @@ export class EditVehiculeComponent implements OnInit {
     });
     this.vehicule = new Vehicule('', '');
     const id = this.route.snapshot.params['id'];
+    this.idEdit = id;
     this.id = id;
     this.vehiculesService.getSingleVehicule(+id).then(
       (vehicule: Vehicule) => {
+        
         this.vehicule = vehicule;
         this.pret = vehicule.add;
         this.vehiculeForm = this.formBuilder.group({
@@ -69,15 +73,20 @@ export class EditVehiculeComponent implements OnInit {
 
   }
 
-  onDeleteVehicule(vehicule: Vehicule) {
-    this.vehiculesService.removeVehicule(vehicule);
-
+  onDeleteVehicule(vehicule : Vehicule) {
+    //if(confirm("Etes vous sur de vouloir supprimer ce véhicule" +vehicule)) 
+      console.log("Implement delete functionality here");
+     // console.log(vehicule);
+      this.vehiculesService.removeVehicule(vehicule);
   }
+
   toggleVisibility(e){
     this.add= e.target.checked;
   }
-  onEditVehicule() {
-    this.vehiculesService.removeVehicule(this.vehicule);
+
+  onSaveVehicule() {
+
+
     console.log('Mise à jour ...');
     const identifiant = this.vehiculeForm.get('identifiant').value;
     const photo = this.vehiculeForm.get('photo').value;
@@ -103,7 +112,11 @@ export class EditVehiculeComponent implements OnInit {
       newVehicule.photo = this.fileUrl;
     }
     console.log(identifiant);
+    console.log(newVehicule);
+    console.log("supprimerV2: "+this.idEdit);
+    this.vehiculesService.removeVehiculeEdit(this.idEdit); 
     this.vehiculesService.createNewVehicule(newVehicule);
+  
     this.router.navigate(['/vehicules']);
   }
 

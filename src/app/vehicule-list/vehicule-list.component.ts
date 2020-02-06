@@ -35,7 +35,11 @@ export class VehiculeListComponent implements OnInit, OnDestroy {
   }
 
   onDeleteVehicule(vehicule: Vehicule) {
-    this.vehiculesService.removeVehicule(vehicule);
+    if(confirm("Etes vous sur de vouloir supprimer ce véhicule")) {
+      console.log("Implement delete functionality here");
+      this.vehiculesService.removeVehicule(vehicule);
+    }
+   
   }
 
   onViewVehicule(id: number) {

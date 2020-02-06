@@ -11,7 +11,7 @@ export class VehiculesService {
 
   constructor() {
     this.getVehicules();
-    }
+  }
 
   vehicules: Vehicule[] = [];
   vehiculesSubject = new Subject<Vehicule[]>();
@@ -21,14 +21,14 @@ export class VehiculesService {
   }
   saveVehicules() {
     firebase.database().ref('/vehicules').set(this.vehicules);
-}
-  
+  }
+
   getVehicules() {
     firebase.database().ref('/vehicules')
       .on('value', (data: DataSnapshot) => {
-          this.vehicules = data.val() ? data.val() : [];
-          this.emitVehicules();
-        }
+        this.vehicules = data.val() ? data.val() : [];
+        this.emitVehicules();
+      }
       );
   }
 
@@ -72,29 +72,37 @@ export class VehiculesService {
         );
       }
     );
-}
-removeVehicule(vehicule: Vehicule) {
-  // if(vehicule.photo) {
-  //   const storageRef = firebase.storage().refFromURL(vehicule.photo);
-  //   storageRef.delete().then(
-  //     () => {
-  //       console.log('Photo removed!');
-  //     },
-  //     (error) => {
-  //       console.log('Could not remove photo! : ' + error);
-  //     }
-  //   );
-  // }
-  const vehiculeIndexToRemove = this.vehicules.findIndex(
-    (vehiculeEl) => {
-      if(vehiculeEl === vehicule) {
-        return true;
-      }
+  }
+  removeVehicule(vehicule: Vehicule) {
+    console.log("service; " + vehicule);
+    if(vehicule.photo) {
+      const storageRef = firebase.storage().refFromURL(vehicule.photo);
+      storageRef.delete().then(
+        () => {
+          console.log('Photo removed!');
+        },
+        (error) => {
+          console.log('Could not remove photo! : ' + error);
+        }
+      );
     }
-  );
-  this.vehicules.splice(vehiculeIndexToRemove, 1);
-  this.saveVehicules();
-  this.emitVehicules();
-}
+    const vehiculeIndexToRemove = this.vehicules.findIndex(
+      (vehiculeEl) => {
+        if (vehiculeEl === vehicule) {
+          return true;
+        }
+      }
+    );
+    this.vehicules.splice(vehiculeIndexToRemove, 1);
+    this.saveVehicules();
+    this.emitVehicules();
+  }
+  removeVehiculeEdit(id: number) {
+    console.log("service; " + id);
+
+    this.vehicules.splice(id, 1);
+    this.saveVehicules();
+    this.emitVehicules();
+  }
 
 }

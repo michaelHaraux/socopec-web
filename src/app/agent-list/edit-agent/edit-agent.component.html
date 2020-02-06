@@ -7,7 +7,7 @@
   
       <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
       <div id="form">
-        <form [formGroup]="agentForm" (ngSubmit)="onEditAgent()">
+        <form [formGroup]="agentForm" (ngSubmit)="onSaveAgent()">
           <div class="form-group">
             <label for="title">Nom</label>
             <input type="text" id="title" class="form-control" formControlName="title" value="{{agent.title}}">
@@ -55,7 +55,7 @@
   
         <p>Gestion des droits</p>
    
-        <form [formGroup]="agentForm" (ngSubmit)="onEditAgent()">
+        <form [formGroup]="agentForm" >
   
           <div class="form-group">
             <label class="radio-inline" for="add">
