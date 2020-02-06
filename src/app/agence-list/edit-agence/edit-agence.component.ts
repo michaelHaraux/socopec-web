@@ -18,6 +18,7 @@ export class EditAgenceComponent implements OnInit {
   fileUrl: string;
   fileUploaded = false;
   id:number;
+  idEdit : number;
 
   constructor(private route: ActivatedRoute,private formBuilder: FormBuilder, private agencesService: AgencesService,
     private router: Router) { }
@@ -40,6 +41,7 @@ export class EditAgenceComponent implements OnInit {
     this.agence = new Agence('', '');
     const id = this.route.snapshot.params['id'];
     this.id = id;
+    this.idEdit = id;
     this.agencesService.getSingleAgence(+id).then(
       (agence: Agence) => {
         this.agence = agence;
@@ -58,12 +60,9 @@ export class EditAgenceComponent implements OnInit {
     );
   }
 
-  onDeleteAgence(agence: Agence) {
-    this.agencesService.removeAgence(agence);
 
-  }
   onEditAgence() {
-    this.agencesService.removeAgence(this.agence);
+   
 
     const nom = this.agenceForm.get('nom').value;
     const rue = this.agenceForm.get('rue').value;
@@ -87,6 +86,7 @@ export class EditAgenceComponent implements OnInit {
     if (this.fileUrl && this.fileUrl !== '') {
       newAgence.photo = this.fileUrl;
     }
+    this.agencesService.removeAgenceEdit(this.idEdit);
     this.agencesService.createNewAgence(newAgence);
     this.router.navigate(['/agences']);
   }

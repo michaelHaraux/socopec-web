@@ -51,18 +51,12 @@ export class AgentsService {
     this.emitAgents();
   }
 
-/*   removeAgent(agent: Agent) {
-    const agentIndexToRemove = this.agents.findIndex(
-      (agentEl) => {
-        if(agentEl === agent) {
-          return true;
-        }
-      }
-    );
-    this.agents.splice(agentIndexToRemove, 1);
+removeAgentEdit(id: number) {
+
+    this.agents.splice(id, 1);
     this.saveAgents();
     this.emitAgents();
-  } */
+  } 
 
   uploadFile(file: File) {
     return new Promise(

@@ -111,9 +111,7 @@ export class EditVehiculeComponent implements OnInit {
     if (this.fileUrl && this.fileUrl !== '') {
       newVehicule.photo = this.fileUrl;
     }
-    console.log(identifiant);
-    console.log(newVehicule);
-    console.log("supprimerV2: "+this.idEdit);
+
     this.vehiculesService.removeVehiculeEdit(this.idEdit); 
     this.vehiculesService.createNewVehicule(newVehicule);
   

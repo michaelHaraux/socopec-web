@@ -19,6 +19,7 @@ export class EditAgentComponent implements OnInit {
   fileUploaded = false;
   add =false;
   id:number;
+  idEdit : number;
 
   constructor(private route: ActivatedRoute,private formBuilder: FormBuilder, private agentsService: AgentsService,
               private router: Router) { }
@@ -41,6 +42,7 @@ export class EditAgentComponent implements OnInit {
     this.agent = new Agent('', '');
     const id = this.route.snapshot.params['id'];
     this.id = id;
+    this.idEdit = id;
     this.agentsService.getSingleAgent(+id).then(
       (agent: Agent) => {
         this.agent = agent;
@@ -61,13 +63,9 @@ export class EditAgentComponent implements OnInit {
 
   }
 
-  onDeleteAgence(agent: Agent) {
-    this.agentsService.removeAgent(agent);
 
-  }
-  
   onSaveAgent() {
-    this.agentsService.removeAgent(this.agent);
+   
 
     const title = this.agentForm.get('title').value;
     const author = this.agentForm.get('author').value;
@@ -83,6 +81,7 @@ export class EditAgentComponent implements OnInit {
     if(this.fileUrl && this.fileUrl !== '') {
       newAgent.photo = this.fileUrl;
     }
+    this.agentsService.removeAgentEdit(this.idEdit);
     this.agentsService.createNewAgent(newAgent);
     this.router.navigate(['/agents']);
   }

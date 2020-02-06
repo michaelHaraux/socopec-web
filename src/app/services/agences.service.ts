@@ -50,19 +50,13 @@ export class AgencesService {
     this.saveAgences();
     this.emitAgences();
   }
-/* 
-  removeAgence(agence: Agence) {
-    const agentIndexToRemove = this.agences.findIndex(
-      (agentEl) => {
-        if(agentEl === agence) {
-          return true;
-        }
-      }
-    );
-    this.agences.splice(agentIndexToRemove, 1);
+
+  removeAgenceEdit(id: number) {
+
+    this.agences.splice(id, 1);
     this.saveAgences();
     this.emitAgences();
-  } */
+  } 
 
   uploadFile(file: File) {
     return new Promise(

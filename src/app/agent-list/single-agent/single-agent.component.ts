@@ -19,6 +19,7 @@ export class SingleAgentComponent implements OnInit {
   utilisateur: string;
   emailTest: string;
   agentCourant: boolean;
+  test : number;
 
   constructor(private route: ActivatedRoute, private agentsService: AgentsService,
     private router: Router) { }
@@ -28,15 +29,19 @@ export class SingleAgentComponent implements OnInit {
       (user) => {
         if (user) {
           this.isAuth = true;
-          this.utilisateur = user.email
+          this.utilisateur = user.email;
+          //console.log("1", this.utilisateur);
           if (this.utilisateur == "admin@gmail.com") {
             this.isAdmin = true;
+          //  console.log("admin",this.isAdmin);
           } else { this.isAdmin = false }
         } else {
           this.isAuth = false;
         }
       }
+      
     );
+   
     this.agent = new Agent('', '');
     const id = this.route.snapshot.params['id'];
     this.id = id;
@@ -44,8 +49,13 @@ export class SingleAgentComponent implements OnInit {
       (agent: Agent) => {
         this.agent = agent;
         this.emailTest = agent.email;
+       // console.log("2", this.emailTest);
+        //console.log("3", this.utilisateur);
+      
+        console.log(this.emailTest.valueOf());
+        console.log(this.utilisateur.valueOf());
 
-        if (this.emailTest.localeCompare(this.utilisateur) == 1   ) {
+        if (this.emailTest.valueOf() === this.utilisateur.valueOf()) {
           this.agentCourant = true;
         } else {
           this.agentCourant = false;
@@ -63,8 +73,8 @@ export class SingleAgentComponent implements OnInit {
 
 
     );
-  
-  
+
+
 
 
 

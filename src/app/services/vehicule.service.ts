@@ -98,7 +98,7 @@ export class VehiculesService {
     this.emitVehicules();
   }
   removeVehiculeEdit(id: number) {
-    console.log("service; " + id);
+   // console.log("service; " + id);
 
     this.vehicules.splice(id, 1);
     this.saveVehicules();
