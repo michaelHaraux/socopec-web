@@ -11,12 +11,14 @@ import * as firebase from 'firebase';
 })
 export class SingleAgentComponent implements OnInit {
 
-  id : number;
+  id: number;
   agent: Agent;
   droitAdd: boolean;
   isAdmin: boolean;
   isAuth: boolean;
-  utilisateur: string
+  utilisateur: string;
+  emailTest: string;
+  agentCourant: boolean;
 
   constructor(private route: ActivatedRoute, private agentsService: AgentsService,
     private router: Router) { }
@@ -26,10 +28,10 @@ export class SingleAgentComponent implements OnInit {
       (user) => {
         if (user) {
           this.isAuth = true;
-          this.utilisateur=user.email
-          if(this.utilisateur=="admin@gmail.com"){
+          this.utilisateur = user.email
+          if (this.utilisateur == "admin@gmail.com") {
             this.isAdmin = true;
-          }else{this.isAdmin=false}
+          } else { this.isAdmin = false }
         } else {
           this.isAuth = false;
         }
@@ -41,6 +43,15 @@ export class SingleAgentComponent implements OnInit {
     this.agentsService.getSingleAgent(+id).then(
       (agent: Agent) => {
         this.agent = agent;
+        this.emailTest = agent.email;
+
+        if (this.emailTest.localeCompare(this.utilisateur) == 1   ) {
+          this.agentCourant = true;
+        } else {
+          this.agentCourant = false;
+        }
+
+        console.log(this.agentCourant);
         if (this.agent.add) {
           this.droitAdd = true
         } else {
@@ -48,12 +59,19 @@ export class SingleAgentComponent implements OnInit {
         }
 
       }
+
+
+
     );
+  
+  
+
+
 
   }
   onEditAgent(id: number) {
-    this.router.navigate(['/agents', 'edit',this.id]);
-}
+    this.router.navigate(['/agents', 'edit', this.id]);
+  }
   onBack() {
     this.router.navigate(['/agents']);
   }
