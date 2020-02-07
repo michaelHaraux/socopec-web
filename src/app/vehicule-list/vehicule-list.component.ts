@@ -23,8 +23,7 @@ export class VehiculeListComponent implements OnInit, OnDestroy {
     this.vehiculesSubscription = this.vehiculesService.vehiculesSubject.subscribe(
       (vehicules: Vehicule[]) => {
         this.vehicules = vehicules;
-        
-        
+        //this.trierPar("modele");
       }
     );
     this.vehiculesService.emitVehicules();
@@ -58,6 +57,7 @@ export class VehiculeListComponent implements OnInit, OnDestroy {
   
   ngOnDestroy() {
     this.vehiculesSubscription.unsubscribe();
+    //this.trierPar("modele");
   }
   onBack() {
     this.router.navigate(['/accueil']);
@@ -65,19 +65,33 @@ export class VehiculeListComponent implements OnInit, OnDestroy {
   
   trierPar(tri:string)
   {
-    switch(tri) { 
-      case "modele": { 
-         this.vehiculesService.vehicules.sort((a,b) => (a.modele > b.modele) ? 1 : -1);
-         break; 
-      } 
-      case "agence": { 
-        this.vehiculesService.vehicules.sort((a,b) => (a.agence > b.agence) ? 1 : -1);
-         break; 
-      } 
-      default: { 
-         this.vehiculesService.vehicules.sort((a,b) => (a.modele > b.modele) ? 1 : -1);
-         break; 
-      } 
-   } 
-}
+  //   switch(tri) 
+  //   { 
+  //       case "modele": 
+  //       { 
+  //         this.vehiculesService.vehicules.sort((a,b) => (a.modele > b.modele) ? 1 : -1);
+  //         break; 
+  //       } 
+  //       case "agence": 
+  //       { 
+  //         this.vehiculesService.vehicules.sort((a,b) => (a.agence > b.agence) ? 1 : -1);
+  //         break; 
+  //       } 
+  //       case "statut": 
+  //       { 
+  //         this.vehiculesService.vehicules.sort((a,b) => (a.add > b.add) ? 1 : -1);
+  //         break; 
+  //       } 
+  //       case "datefab": 
+  //       { 
+  //         this.vehiculesService.vehicules.sort((a,b) => (a.dateFab > b.dateFab) ? 1 : -1);
+  //         break; 
+  //       } 
+  //       default: 
+  //       { 
+  //         this.vehiculesService.vehicules.sort((a,b) => (a.modele > b.modele) ? 1 : -1);
+  //         break; 
+  //       } 
+  //  } 
+  }
 }
