@@ -13,7 +13,6 @@ import * as XLSX from 'xlsx';
 })
 export class BackupVehiculeComponent implements OnInit, OnDestroy {
 
-  
   vehiculesBackup: vehiculeBackup[];
   vehiculesSubscription: Subscription;
   
@@ -41,5 +40,16 @@ export class BackupVehiculeComponent implements OnInit, OnDestroy {
   }
   onBack() {
     this.router.navigate(['/vehicules']);
+  }
+
+  deleteBackup(vehiculeBackup : vehiculeBackup[]){
+    console.log("entrer deleteBackup");
+    vehiculeBackup.forEach(vehicule => {
+      
+      this.vehiculesService.removeVehiculeBackup(vehicule);
+      this.vehiculesService.removeVehiculeBackup(vehicule);
+    });
+    
+
   }
 }

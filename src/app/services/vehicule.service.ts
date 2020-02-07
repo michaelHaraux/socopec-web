@@ -143,4 +143,17 @@ export class VehiculesService {
     this.emitVehicules();
   }
 
+  removeVehiculeBackup(vehiculeBackup: vehiculeBackup) {
+    const vehiculeIndexToRemove = this.vehiculesBackup.findIndex(
+      (vehiculeBackupE1) => {
+        if (vehiculeBackupE1 === vehiculeBackup) {
+          return true;
+        }
+      }
+    );
+    this.vehiculesBackup.splice(vehiculeIndexToRemove, 1);
+     this.saveVehiculesBackup();
+     this.emitVehiculesBackup();
+   }
+
 }
