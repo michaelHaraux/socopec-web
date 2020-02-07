@@ -20,6 +20,8 @@ export class Vehicule {
     ];
     
     recupAdd:boolean;
+    dateDelete : string;
+    AgentDelete : string;
     
     constructor(public identifiant: string, public modele: string) 
     {

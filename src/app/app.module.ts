@@ -1,12 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { HTTPNODESERVICEService } from './http-node-service.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { VEHICULEComponent } from './vehicule/vehicule.component';
-import { LISTEVEHICULESComponent } from './liste-vehicules/liste-vehicules.component';
-import { AjoutVehiculeComponent } from './ajout-vehicule/ajout-vehicule.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -37,9 +33,6 @@ registerLocaleData(localeFr);
 @NgModule({
   declarations: [
     AppComponent,
-    VEHICULEComponent,
-    LISTEVEHICULESComponent,
-    AjoutVehiculeComponent,
     AccueilComponent,
     SignupComponent,
     SigninComponent,
@@ -66,7 +59,7 @@ registerLocaleData(localeFr);
     HttpClientModule,
     
   ],
-  providers: [HTTPNODESERVICEService,AuthService, AuthGuardService,Subject,{provide: LOCALE_ID, useValue: "fr-CA" }],
+  providers: [AuthService, AuthGuardService,Subject,{provide: LOCALE_ID, useValue: "fr-CA" }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

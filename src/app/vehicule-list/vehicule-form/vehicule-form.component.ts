@@ -64,6 +64,11 @@ export class VehiculeFormComponent implements OnInit {
     newVehicule.dateFab = dateFab;
     newVehicule.agence = agence;
     newVehicule.add = this.add;
+    newVehicule.dateDelete = "07/01/2020";
+    newVehicule.AgentDelete= "Administrateur";
+
+   // this.vehiculesService.backupVehicule(vehicule);
+
     while (this.listeFilesUrl.length !=3)
     {
       this.listeFilesUrl.push('');

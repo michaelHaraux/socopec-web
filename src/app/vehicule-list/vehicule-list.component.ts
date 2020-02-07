@@ -3,6 +3,7 @@ import { VehiculesService } from '../services/vehicule.service';
 import { Vehicule } from '../models/vehicule.model';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { vehiculeBackup } from '../models/vehiculeBackup.models';
 
 
 @Component({
@@ -15,8 +16,6 @@ export class VehiculeListComponent implements OnInit, OnDestroy {
   vehicules: Vehicule[];
   vehiculesSubscription: Subscription;
   
-  
-
   constructor(private vehiculesService: VehiculesService, private router: Router) {}
 
   ngOnInit() {
@@ -33,11 +32,19 @@ export class VehiculeListComponent implements OnInit, OnDestroy {
     this.router.navigate(['/vehicules', 'new']);
   }
 
-  onDeleteVehicule(vehicule: Vehicule) {
-    if(confirm("Etes vous sur de vouloir supprimer ce véhicule")) {
+  onBackupVehicule(vehicule : vehiculeBackup){
+        this.vehiculesService.backupVehicule(vehicule);
+        console.log("Backup du vehicule");
+  }
+
+  onDeleteVehicule(vehicule: Vehicule, vehiculeBackup : vehiculeBackup) {
+   // if(confirm("Etes vous sur de vouloir supprimer ce véhicule")) {
       console.log("Implement delete functionality here");
-      this.vehiculesService.removeVehicule(vehicule);
-    }
+       this.vehiculesService.backupVehicule(vehiculeBackup);
+       this.vehiculesService.removeVehicule(vehicule);
+
+   // }
+ 
    
   }
 

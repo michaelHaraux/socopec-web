@@ -10,7 +10,6 @@ import {SingleAgentComponent} from './agent-list/single-agent/single-agent.compo
 import {AgenceFormComponent} from './agence-list/agence-form/agence-form.component';
 import {SingleAgenceComponent} from './agence-list/single-agence/single-agence.component';
 import {SingleVehiculeComponent} from './vehicule-list/single-vehicule/single-vehicule.component';
-import { LISTEVEHICULESComponent } from './liste-vehicules/liste-vehicules.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AccueilComponent } from './accueil/accueil.component';
@@ -40,8 +39,6 @@ import {EditAgentComponent} from './agent-list/edit-agent/edit-agent.component'
     { path: 'agences/edit/:id', canActivate: [AuthGuardService], component: EditAgenceComponent },
   
     { path: 'agences/view/:id', canActivate: [AuthGuardService], component: SingleAgenceComponent },
-    { path: 'listeVehicules', canActivate: [AuthGuardService], component: LISTEVEHICULESComponent },
-    { path: 'accueil/listeVehicules', canActivate: [AuthGuardService], component: LISTEVEHICULESComponent },
     { path: 'accueil', canActivate: [AuthGuardService],component: AccueilComponent },
     
   ];

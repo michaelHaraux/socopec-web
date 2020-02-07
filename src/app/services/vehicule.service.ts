@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Vehicule } from '../models/vehicule.model';
+import { vehiculeBackup } from '../models/vehiculeBackup.models';
+
 import DataSnapshot = firebase.database.DataSnapshot;
 import * as firebase from 'firebase';
 
@@ -14,13 +16,23 @@ export class VehiculesService {
   }
 
   vehicules: Vehicule[] = [];
+  vehiculesBackup : vehiculeBackup [] = [];
   vehiculesSubject = new Subject<Vehicule[]>();
+  vehiculesBackupSubject = new Subject<vehiculeBackup[]>();
+
 
   emitVehicules() {
     this.vehiculesSubject.next(this.vehicules);
   }
   saveVehicules() {
     firebase.database().ref('/vehicules').set(this.vehicules);
+  }
+
+  emitVehiculesBackup() {
+    this.vehiculesBackupSubject.next(this.vehiculesBackup);
+  }
+  saveVehiculesBackup() {
+    firebase.database().ref('/vehiculeBackup').set(this.vehiculesBackup);
   }
 
   getVehicules() {
@@ -45,10 +57,17 @@ export class VehiculesService {
       }
     );
   }
+
   createNewVehicule(newVehicule: Vehicule) {
     this.vehicules.push(newVehicule);
     this.saveVehicules();
     this.emitVehicules();
+  }
+
+  backupVehicule(vehiculeBackup: vehiculeBackup){
+    this.vehiculesBackup.push(vehiculeBackup);
+    this.saveVehiculesBackup();
+    this.emitVehiculesBackup();
   }
 
 
@@ -73,6 +92,7 @@ export class VehiculesService {
       }
     );
   }
+
   removeVehicule(vehicule: Vehicule) {
     console.log("service; " + vehicule);
     if(vehicule.photo) {
@@ -97,9 +117,9 @@ export class VehiculesService {
     this.saveVehicules();
     this.emitVehicules();
   }
+
   removeVehiculeEdit(id: number) {
    // console.log("service; " + id);
-
     this.vehicules.splice(id, 1);
     this.saveVehicules();
     this.emitVehicules();
