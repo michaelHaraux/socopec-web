@@ -61,20 +61,13 @@
                   
             </td>
             <td style="max-width: 50px;">
-              <button (click)="onDeleteVehicule(vehicule, vehicule)" style="max-width: 90%;" ><img style="max-width: 20px;" src="assets/img/deleteVehicule.png" alt="suppression" ></button>
-
-                  
-            </td>
-            <td style="max-width: 50px;">
-              <button (click)="onBackupVehicule(vehicule)" style="max-width: 90%;" ><img style="max-width: 20px;" src="assets/img/téléchargement.png" alt="Backup" ></button>
-
-                  
+              <button (click)="onDeleteVehicule(vehicule, vehicule)" style="max-width: 90%;" ><img style="max-width: 20px;" src="assets/img/deleteVehicule.png" alt="suppression" ></button>    
             </td>
           </tr>
         </table>
       </div>
       <button class="btn btn-default" (click)="onBack()">Retour accueil</button>
-      <!-- <button class="btn btn-success" style="float: right;" (click)="onNewVehicule()">Nouveau Véhicule</button> -->
+      <button class="btn btn-default"  (click)="onViewBackupVehicule()">Véhicules supprimés</button> 
     </div>
   </div>
   

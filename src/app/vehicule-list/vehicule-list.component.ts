@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { vehiculeBackup } from '../models/vehiculeBackup.models';
 
 
+
 @Component({
   selector: 'app-vehicule-list',
   templateUrl: './vehicule-list.component.html',
@@ -45,10 +46,12 @@ export class VehiculeListComponent implements OnInit, OnDestroy {
        this.vehiculesService.removeVehicule(vehicule);
 
    // }
- 
-   
   }
 
+  onViewBackupVehicule(){
+    this.router.navigate(['/ListeBackupVehicules']);
+
+  }
   onViewVehicule(id: number) {
     this.router.navigate(['/vehicules', 'view', id]);
   }

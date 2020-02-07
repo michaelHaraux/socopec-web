@@ -27,6 +27,7 @@ import { VehiculeFormComponent } from './vehicule-list/vehicule-form/vehicule-fo
 import { EditVehiculeComponent } from './vehicule-list/edit-vehicule/edit-vehicule.component';
 import { EditAgentComponent } from './agent-list/edit-agent/edit-agent.component';
 import { EditAgenceComponent } from './agence-list/edit-agence/edit-agence.component';
+import { BackupVehiculeComponent } from './vehicule-list/backup-vehicule/backup-vehicule.component';
 
 registerLocaleData(localeFr);
 
@@ -48,7 +49,8 @@ registerLocaleData(localeFr);
     VehiculeFormComponent,
     EditVehiculeComponent,
     EditAgentComponent,
-    EditAgenceComponent
+    EditAgenceComponent,
+    BackupVehiculeComponent
   ],
   imports: [
     BrowserModule,

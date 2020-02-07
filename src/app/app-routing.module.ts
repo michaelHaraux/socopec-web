@@ -14,9 +14,11 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { AuthGuardService } from './services/auth-guard.service';
-import {EditVehiculeComponent} from './vehicule-list/edit-vehicule/edit-vehicule.component'
-import {EditAgenceComponent} from './agence-list/edit-agence/edit-agence.component'
-import {EditAgentComponent} from './agent-list/edit-agent/edit-agent.component'
+import {EditVehiculeComponent} from './vehicule-list/edit-vehicule/edit-vehicule.component';
+import {EditAgenceComponent} from './agence-list/edit-agence/edit-agence.component';
+import {EditAgentComponent} from './agent-list/edit-agent/edit-agent.component';
+import {BackupVehiculeComponent} from './vehicule-list/backup-vehicule/backup-vehicule.component';
+
 
   const appRoutes: Routes = [
     { path: 'auth/signup', component: SignupComponent },
@@ -41,6 +43,7 @@ import {EditAgentComponent} from './agent-list/edit-agent/edit-agent.component'
     { path: 'agences/view/:id', canActivate: [AuthGuardService], component: SingleAgenceComponent },
     { path: 'accueil', canActivate: [AuthGuardService],component: AccueilComponent },
     
+    {path: 'ListeBackupVehicules', canActivate: [AuthGuardService],component: BackupVehiculeComponent },
   ];
 
 @NgModule({

@@ -13,6 +13,7 @@ export class VehiculesService {
 
   constructor() {
     this.getVehicules();
+    this.getVehiculesBackup();
   }
 
   vehicules: Vehicule[] = [];
@@ -40,6 +41,15 @@ export class VehiculesService {
       .on('value', (data: DataSnapshot) => {
         this.vehicules = data.val() ? data.val() : [];
         this.emitVehicules();
+      }
+      );
+  }
+
+  getVehiculesBackup() {
+    firebase.database().ref('/vehiculeBackup')
+      .on('value', (data: DataSnapshot) => {
+        this.vehiculesBackup = data.val() ? data.val() : [];
+        this.emitVehiculesBackup();
       }
       );
   }
