@@ -17,6 +17,7 @@ export class EditVehiculeComponent implements OnInit {
   vehiculeForm: FormGroup;
   fileIsUploading = false;
   fileUrl: string;
+  listeFilesUrl: string[] = [];
   fileUploaded = false;
   id: number;
   idEdit : number;
@@ -119,11 +120,15 @@ export class EditVehiculeComponent implements OnInit {
       newVehicule.add = recupAdd;
     }
     
-
-    if (this.fileUrl && this.fileUrl !== '') {
+    while (this.listeFilesUrl.length !=3)
+    {
+      this.listeFilesUrl.push('');
+    }
+    if(this.fileUrl && this.fileUrl !== '') {
+      newVehicule.addPhotos(this.listeFilesUrl)
       newVehicule.photo = this.fileUrl;
     }
-
+    this.listeFilesUrl=[];
     this.vehiculesService.removeVehiculeEdit(this.idEdit); 
     this.vehiculesService.createNewVehicule(newVehicule);
   
@@ -131,19 +136,33 @@ export class EditVehiculeComponent implements OnInit {
   }
 
 
-  onUploadFile(file: File) {
+  onUploadFile(file: File) 
+  {
     this.fileIsUploading = true;
     this.vehiculesService.uploadFile(file).then(
-      (url: string) => {
+      (url: string) => 
+      {
         this.fileUrl = url;
+        this.listeFilesUrl.push(this.fileUrl);
         this.fileIsUploading = false;
         this.fileUploaded = true;
       }
     );
-
-  }
+}
   detectFiles(event) {
     this.onUploadFile(event.target.files[0]);
+  }
+
+  detectMultipleFiles(event) {
+
+    if (event.target.files.length < 4)
+    {
+      for (var i = 0; i < event.target.files.length; i++) 
+      {
+        this.onUploadFile(event.target.files[i]);
+      }
+    }
+    //this.onUploadFile(event.target.files[0]);
   }
 
   onBack() {

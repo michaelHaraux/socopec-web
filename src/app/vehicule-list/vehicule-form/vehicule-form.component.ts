@@ -20,14 +20,6 @@ export class VehiculeFormComponent implements OnInit {
   fileIsUploading = false;
   fileUrl: string;
   listeFilesUrl: string[] = [];
-  //listeFilesUrl: Array<String> = [];
-  //listeFilesUrl : 
-  //[
-    //{Photo1:string},
-    //{Photo2:string},
-    //{Photo3:string}
-  //];
-  
   fileUploaded = false;
   add = false;
   
@@ -76,11 +68,11 @@ export class VehiculeFormComponent implements OnInit {
     {
       this.listeFilesUrl.push('');
     }
-    newVehicule.addPhotos(this.listeFilesUrl)
-    this.listeFilesUrl=[];
     if(this.fileUrl && this.fileUrl !== '') {
+      newVehicule.addPhotos(this.listeFilesUrl)
       newVehicule.photo = this.fileUrl;
     }
+    this.listeFilesUrl=[];
     this.vehiculesService.createNewVehicule(newVehicule);
     this.router.navigate(['/vehicules']);
   }
