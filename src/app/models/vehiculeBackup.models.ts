@@ -1,6 +1,5 @@
-import { Agence } from './agence.model';
 
-export class Vehicule {
+export class vehiculeBackup {
 
     photo: string;
     dateFab : string;
@@ -16,4 +15,5 @@ export class Vehicule {
     
     constructor(public identifiant: string, public modele: string) {
     }
+    
   }
