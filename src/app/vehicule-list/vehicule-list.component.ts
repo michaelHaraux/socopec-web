@@ -4,7 +4,8 @@ import { Vehicule } from '../models/vehicule.model';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { vehiculeBackup } from '../models/vehiculeBackup.models';
-
+import { AuthService } from '../services/auth.service';
+import * as firebase from 'firebase';
 
 
 @Component({
@@ -14,10 +15,14 @@ import { vehiculeBackup } from '../models/vehiculeBackup.models';
 })
 export class VehiculeListComponent implements OnInit, OnDestroy {
 
+  isAdmin: boolean;
+  isAuth: boolean;
+  utilisateur: string
+  AgentDelete : string;
   vehicules: Vehicule[];
   vehiculesSubscription: Subscription;
-  
-  constructor(private vehiculesService: VehiculesService, private router: Router) {}
+
+  constructor(private vehiculesService: VehiculesService, private router: Router) { }
 
   ngOnInit() {
     this.vehiculesSubscription = this.vehiculesService.vehiculesSubject.subscribe(
@@ -27,34 +32,53 @@ export class VehiculeListComponent implements OnInit, OnDestroy {
       }
     );
     this.vehiculesService.emitVehicules();
+
+      firebase.auth().onAuthStateChanged(
+        (user) => {
+          if (user) {
+            this.isAuth = true;
+            this.utilisateur=user.email
+            if(this.utilisateur=="admin@gmail.com"){
+              this.isAdmin = true;
+            }else{this.isAdmin=false}
+          } else {
+            this.isAuth = false;
+          }
+        }
+      );
+    
   }
 
   onNewVehicule() {
     this.router.navigate(['/vehicules', 'new']);
   }
 
-  onBackupVehicule(vehicule : vehiculeBackup){
-        this.vehiculesService.backupVehicule(vehicule);
-        console.log("Backup du vehicule");
+  date = new Date();
+  dateString = this.date.toDateString();
+
+  onDeleteVehicule(vehicule: Vehicule, vehiculeBackup: vehiculeBackup) {
+    // if(confirm("Etes vous sur de vouloir supprimer ce véhicule")) {
+    console.log("Implement delete functionality here");
+
+    vehiculeBackup.dateDelete = this.dateString;
+    vehiculeBackup.AgentDelete = this.utilisateur;
+    console.log("agent", vehiculeBackup.AgentDelete);
+    console.log("date", vehiculeBackup.dateDelete);
+
+    this.vehiculesService.backupVehicule(vehiculeBackup);
+    this.vehiculesService.removeVehicule(vehicule);
+
+    // }
   }
 
-  onDeleteVehicule(vehicule: Vehicule, vehiculeBackup : vehiculeBackup) {
-   // if(confirm("Etes vous sur de vouloir supprimer ce véhicule")) {
-      console.log("Implement delete functionality here");
-       this.vehiculesService.backupVehicule(vehiculeBackup);
-       this.vehiculesService.removeVehicule(vehicule);
-
-   // }
-  }
-
-  onViewBackupVehicule(){
+  onViewBackupVehicule() {
     this.router.navigate(['/ListeBackupVehicules']);
 
   }
   onViewVehicule(id: number) {
     this.router.navigate(['/vehicules', 'view', id]);
   }
-  
+
   ngOnDestroy() {
     this.vehiculesSubscription.unsubscribe();
     //this.trierPar("modele");
@@ -62,36 +86,35 @@ export class VehiculeListComponent implements OnInit, OnDestroy {
   onBack() {
     this.router.navigate(['/accueil']);
   }
-  
-  trierPar(tri:string)
-  {
-  //   switch(tri) 
-  //   { 
-  //       case "modele": 
-  //       { 
-  //         this.vehiculesService.vehicules.sort((a,b) => (a.modele > b.modele) ? 1 : -1);
-  //         break; 
-  //       } 
-  //       case "agence": 
-  //       { 
-  //         this.vehiculesService.vehicules.sort((a,b) => (a.agence > b.agence) ? 1 : -1);
-  //         break; 
-  //       } 
-  //       case "statut": 
-  //       { 
-  //         this.vehiculesService.vehicules.sort((a,b) => (a.add > b.add) ? 1 : -1);
-  //         break; 
-  //       } 
-  //       case "datefab": 
-  //       { 
-  //         this.vehiculesService.vehicules.sort((a,b) => (a.dateFab > b.dateFab) ? 1 : -1);
-  //         break; 
-  //       } 
-  //       default: 
-  //       { 
-  //         this.vehiculesService.vehicules.sort((a,b) => (a.modele > b.modele) ? 1 : -1);
-  //         break; 
-  //       } 
-  //  } 
+
+  trierPar(tri: string) {
+    //   switch(tri) 
+    //   { 
+    //       case "modele": 
+    //       { 
+    //         this.vehiculesService.vehicules.sort((a,b) => (a.modele > b.modele) ? 1 : -1);
+    //         break; 
+    //       } 
+    //       case "agence": 
+    //       { 
+    //         this.vehiculesService.vehicules.sort((a,b) => (a.agence > b.agence) ? 1 : -1);
+    //         break; 
+    //       } 
+    //       case "statut": 
+    //       { 
+    //         this.vehiculesService.vehicules.sort((a,b) => (a.add > b.add) ? 1 : -1);
+    //         break; 
+    //       } 
+    //       case "datefab": 
+    //       { 
+    //         this.vehiculesService.vehicules.sort((a,b) => (a.dateFab > b.dateFab) ? 1 : -1);
+    //         break; 
+    //       } 
+    //       default: 
+    //       { 
+    //         this.vehiculesService.vehicules.sort((a,b) => (a.modele > b.modele) ? 1 : -1);
+    //         break; 
+    //       } 
+    //  } 
   }
 }

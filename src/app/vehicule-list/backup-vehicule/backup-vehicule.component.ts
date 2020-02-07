@@ -30,4 +30,7 @@ export class BackupVehiculeComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.vehiculesSubscription.unsubscribe();
   }
+  onBack() {
+    this.router.navigate(['/vehicules']);
+  }
 }

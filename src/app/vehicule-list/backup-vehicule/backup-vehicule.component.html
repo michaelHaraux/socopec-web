@@ -16,9 +16,10 @@
         <td style=" border:solid 1px black">{{ vehicule.modele }}</td>
         <td style=" border:solid 1px black">{{ vehicule.agence }}</td>
         <td style=" border:solid 1px black">{{ vehicule.dateFab }}</td>
-        <td style=" border:solid 1px black">{{ vehicule.dateDelete }}</td>
+        <td style=" border:solid 1px black">{{ vehicule.dateDelete | date:'EEEE d MMMM y' }}</td>
         <td style=" border:solid 1px black">{{ vehicule.AgentDelete }}</td>
 
       </tr>
     </table>
   </div>
+  <button class="btn btn-default" (click)="onBack()">Retour</button>

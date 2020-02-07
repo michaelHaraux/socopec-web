@@ -2,26 +2,33 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Vehicule } from '../models/vehicule.model';
 import { vehiculeBackup } from '../models/vehiculeBackup.models';
-
-import DataSnapshot = firebase.database.DataSnapshot;
+import { AuthService } from '../services/auth.service';
 import * as firebase from 'firebase';
+import DataSnapshot = firebase.database.DataSnapshot;
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class VehiculesService {
 
-  constructor() {
+
+  constructor(private authService: AuthService) {
     this.getVehicules();
     this.getVehiculesBackup();
   }
 
+  agentDelete : string;
+  isAdmin: boolean;
+  isAuth: boolean;
+  utilisateur: string
   vehicules: Vehicule[] = [];
   vehiculesBackup : vehiculeBackup [] = [];
   vehiculesSubject = new Subject<Vehicule[]>();
   vehiculesBackupSubject = new Subject<vehiculeBackup[]>();
 
-
+  
+ 
   emitVehicules() {
     this.vehiculesSubject.next(this.vehicules);
   }
@@ -75,6 +82,7 @@ export class VehiculesService {
   }
 
   backupVehicule(vehiculeBackup: vehiculeBackup){
+    console.log(vehiculeBackup.dateDelete);
     this.vehiculesBackup.push(vehiculeBackup);
     this.saveVehiculesBackup();
     this.emitVehiculesBackup();
