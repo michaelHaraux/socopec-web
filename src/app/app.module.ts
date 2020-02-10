@@ -28,7 +28,7 @@ import { EditVehiculeComponent } from './vehicule-list/edit-vehicule/edit-vehicu
 import { EditAgentComponent } from './agent-list/edit-agent/edit-agent.component';
 import { EditAgenceComponent } from './agence-list/edit-agence/edit-agence.component';
 import { BackupVehiculeComponent } from './vehicule-list/backup-vehicule/backup-vehicule.component';
-
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 registerLocaleData(localeFr);
 
 @NgModule({
@@ -59,7 +59,7 @@ registerLocaleData(localeFr);
     FormsModule,
     BrowserModule,
     HttpClientModule,
-    
+    MDBBootstrapModule.forRoot(),
   ],
   providers: [AuthService, AuthGuardService,Subject,{provide: LOCALE_ID, useValue: "fr-CA" }],
   bootstrap: [AppComponent]

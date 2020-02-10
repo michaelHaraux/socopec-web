@@ -7,7 +7,6 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          
           "style": "scss"
         }
       },
@@ -29,10 +28,20 @@
               "src/assets"
             ],
             "styles": [
+              "../socopec-web/node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
+              "../socopec-web/node_modules/@fortawesome/fontawesome-free/scss/solid.scss",
+              "../socopec-web/node_modules/@fortawesome/fontawesome-free/scss/regular.scss",
+              "../socopec-web/node_modules/@fortawesome/fontawesome-free/scss/brands.scss",
+              "../socopec-web/node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss",
+              "../socopec-web/node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
+              "../socopec-web/node_modules/animate.css/animate.css",
               "../socopec-web/node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "../socopec-web/node_modules/chart.js/dist/Chart.js",
+              "../socopec-web/node_modules/hammerjs/hammer.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -126,6 +135,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "SOCOPEC"
 }

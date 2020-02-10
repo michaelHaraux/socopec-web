@@ -8,9 +8,9 @@
       <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
       <div class="list-group">
       </div>
-      <h2>Trier par :</h2>
+      <!-- <h2>Trier par :</h2> -->
       <div id="selectTri">
-        <div>
+        <!-- <div>
           <label class="radio-inline">
             <input type="radio" name="optradio" value="modele" (click)="trierPar('modele')" checked>Modèle
           </label>
@@ -23,21 +23,21 @@
           <label class="radio-inline">
             <input type="radio" name="optradio" value="datefab" (click)="trierPar('datefab')">Date de fabrication
           </label>
-        </div>
+        </div> -->
         <div><div>Rechercher par modèle :</div><input type="text"></div>
         <div><div>Ajouter un véhicule</div><div style="width: 30px;"><input type="image" alt="Ajout" width="25px" (click)="onNewVehicule()" src="https://cdn3.iconfinder.com/data/icons/buttons/512/Icon_11-512.png"></div></div>
         
       </div>
       <div>
-        <table style=" border:solid 1px black; margin: 10px; overflow: auto;">
+         <table style=" border:solid 1px black; margin: 10px; overflow: auto;" mdbTable class="z-depth-1">
           <thead style="background-color:#D3E5E5" >
             <tr >
-              <th scope="col" style=" border:solid 1px black">Identifiant</th>
+              <th scope="col" style=" border:solid 1px black" [mdbTableSort]="vehicules" sortBy="identifiant"><mdb-icon fas icon="sort"></mdb-icon>Identifiant</th>
               <th scope="col" style=" border:solid 1px black">Miniature</th>
-              <th scope="col" style=" border:solid 1px black">Modèle</th>
-              <th scope="col" style=" border:solid 1px black">Agence</th>
-              <th scope="col" style=" border:solid 1px black">Statut</th>
-              <th scope="col" style=" border:solid 1px black">Date de fabrication</th>
+              <th scope="col" style=" border:solid 1px black"[mdbTableSort]="vehicules"sortBy="modele" ><mdb-icon fas icon="sort"></mdb-icon>Modèle</th>
+              <th scope="col" style=" border:solid 1px black"[mdbTableSort]="vehicules"sortBy="agence" ><mdb-icon fas icon="sort"></mdb-icon>Agence</th>
+              <th scope="col" style=" border:solid 1px black" >Statut</th>
+              <th scope="col" style=" border:solid 1px black"[mdbTableSort]="vehicules" sortBy="dateFab"><mdb-icon fas icon="sort"></mdb-icon>Date de fabrication</th>
               <th scope="col" style=" border:solid 1px black"> Détails</th>
               <th scope="col" style=" border:solid 1px black"> Suppression</th>
             </tr>
@@ -61,7 +61,8 @@
               <button (click)="onDeleteVehicule(vehicule, vehicule)" style="max-width: 90%;" ><img style="max-width: 20px;" src="assets/img/deleteVehicule.png" alt="suppression" ></button>    
             </td>
           </tr>
-        </table>
+        </table> 
+
       </div>
       <button class="btn btn-default" (click)="onBack()">Retour accueil</button>
       <button class="btn btn-default"  (click)="onViewBackupVehicule()">Véhicules supprimés</button> 

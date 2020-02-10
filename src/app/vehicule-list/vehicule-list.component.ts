@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { vehiculeBackup } from '../models/vehiculeBackup.models';
 import { AuthService } from '../services/auth.service';
 import * as firebase from 'firebase';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 
 @Component({
@@ -21,14 +22,16 @@ export class VehiculeListComponent implements OnInit, OnDestroy {
   AgentDelete : string;
   vehicules: Vehicule[];
   vehiculesSubscription: Subscription;
+  
 
   constructor(private vehiculesService: VehiculesService, private router: Router) { }
 
   ngOnInit() {
+ 
     this.vehiculesSubscription = this.vehiculesService.vehiculesSubject.subscribe(
       (vehicules: Vehicule[]) => {
         this.vehicules = vehicules;
-        //this.trierPar("modele");
+        
       }
     );
     this.vehiculesService.emitVehicules();
