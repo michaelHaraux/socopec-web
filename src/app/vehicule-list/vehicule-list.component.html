@@ -24,7 +24,10 @@
             <input type="radio" name="optradio" value="datefab" (click)="trierPar('datefab')">Date de fabrication
           </label>
         </div> -->
-        <div><div>Rechercher par modèle :</div><input type="text"  [(ngModel)]="userFilter.modele" placeholder="Filtrer par modèle"></div>
+        <div><input type="text"  [(ngModel)]="userFilter.identifiant" placeholder="Filtrer par identifant"></div>
+        <div><input type="text"  [(ngModel)]="userFilter.modele" placeholder="Filtrer par modèle"></div>
+        <div><input type="text"  [(ngModel)]="userFilter.agence" placeholder="Filtrer par agence"></div>
+        <div><input type="text"  [(ngModel)]="userFilter.dateFab" placeholder="Filtrer par date"></div>
         <div><div>Ajouter un véhicule</div><div style="width: 30px;"><input type="image" alt="Ajout" width="25px" (click)="onNewVehicule()" src="https://cdn3.iconfinder.com/data/icons/buttons/512/Icon_11-512.png"></div></div>
         
       </div>

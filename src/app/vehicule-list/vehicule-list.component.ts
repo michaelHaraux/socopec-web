@@ -16,7 +16,7 @@ import { FilterPipe } from 'ngx-filter-pipe';
   styleUrls: ['./vehicule-list.component.scss']
 })
 export class VehiculeListComponent implements OnInit, OnDestroy {
-  userFilter: any = { modele: '' };
+  userFilter: any = { modele: '', agence:'', identifiant:'', dateFab:'' };
   isAdmin: boolean;
   isAuth: boolean;
   utilisateur: string
