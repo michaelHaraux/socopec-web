@@ -7,6 +7,7 @@ import { vehiculeBackup } from '../models/vehiculeBackup.models';
 import { AuthService } from '../services/auth.service';
 import * as firebase from 'firebase';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { FilterPipe } from 'ngx-filter-pipe';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
   styleUrls: ['./vehicule-list.component.scss']
 })
 export class VehiculeListComponent implements OnInit, OnDestroy {
-
+  userFilter: any = { modele: '' };
   isAdmin: boolean;
   isAuth: boolean;
   utilisateur: string
@@ -24,7 +25,7 @@ export class VehiculeListComponent implements OnInit, OnDestroy {
   vehiculesSubscription: Subscription;
   
 
-  constructor(private vehiculesService: VehiculesService, private router: Router) { }
+  constructor(private filterPipe: FilterPipe,private vehiculesService: VehiculesService, private router: Router) { }
 
   ngOnInit() {
  

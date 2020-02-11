@@ -29,7 +29,7 @@ import { EditAgentComponent } from './agent-list/edit-agent/edit-agent.component
 import { EditAgenceComponent } from './agence-list/edit-agence/edit-agence.component';
 import { BackupVehiculeComponent } from './vehicule-list/backup-vehicule/backup-vehicule.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-//import { FilterPipeModule } from 'ngx-filter-pipe';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 registerLocaleData(localeFr);
 
@@ -55,7 +55,7 @@ registerLocaleData(localeFr);
     BackupVehiculeComponent
   ],
   imports: [
-  //  FilterPipeModule,
+    FilterPipeModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,

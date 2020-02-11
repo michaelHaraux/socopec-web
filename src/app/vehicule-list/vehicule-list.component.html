@@ -24,7 +24,7 @@
             <input type="radio" name="optradio" value="datefab" (click)="trierPar('datefab')">Date de fabrication
           </label>
         </div> -->
-        <div><div>Rechercher par modèle :</div><input type="text"></div>
+        <div><div>Rechercher par modèle :</div><input type="text"  [(ngModel)]="userFilter.modele" placeholder="Filtrer par modèle"></div>
         <div><div>Ajouter un véhicule</div><div style="width: 30px;"><input type="image" alt="Ajout" width="25px" (click)="onNewVehicule()" src="https://cdn3.iconfinder.com/data/icons/buttons/512/Icon_11-512.png"></div></div>
         
       </div>
@@ -42,7 +42,7 @@
               <th scope="col" style=" border:solid 1px black"> Suppression</th>
             </tr>
           </thead>
-          <tr  *ngFor="let vehicule of vehicules ; let i = index" style=" border:solid 1px black">
+          <tr  *ngFor="let vehicule of vehicules | filterBy: userFilter; let i = index" style=" border:solid 1px black">
         
             <td style=" border:solid 1px black">{{ vehicule.identifiant }}</td>
             <td style=" border:solid 1px black">{{ vehicule.miniature }}</td>

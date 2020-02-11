@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import * as firebase from 'firebase';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,8 +9,12 @@ import * as firebase from 'firebase';
 })
 export class AppComponent {
 
+  
+
   date = new Date();
   constructor() {
+
+
     const config = {
       
         apiKey: "AIzaSyBKo2au7gS7ax_Od9YgDa0z239aJMOBwVY",
