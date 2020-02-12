@@ -8,7 +8,16 @@
       <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
       <div id="form">
         <form [formGroup]="vehiculeForm" (ngSubmit)="onSaveVehicule()">
-    
+          <div class="row">
+            <ul>
+              <li *ngFor="let photo of vehicule.photos let x = index">
+                <img style="max-width:200px;" *ngIf="photo.photoA" alt="Photo introuvable" [src]="photo.photoA">
+                <img style="max-width:200px;" *ngIf="photo.photoB" alt="Photo introuvable" [src]="photo.photoB">
+                <img style="max-width:200px;" *ngIf="photo.photoC" alt="Photo introuvable" [src]="photo.photoC">
+              </li>
+            </ul>
+      
+          </div>
           <div class="form-group">
             <label for="identifiant">Identifiant</label>
             <input type="text" id="identifiant" class="form-control" formControlName="identifiant" value="{{vehicule.identifiant}}">
@@ -42,7 +51,7 @@
             <input type="text" id="agence" class="form-control" formControlName="agence" value="{{vehicule.agence}}">
           </div>
           
-          <div class="form-group" style="visibility: hidden;">
+          <div class="form-group" style="visibility: hidden;display: none;">
             <label for="recupadd">RecupAdd</label>
             <input type="text" id="recupadd" class="form-control" value="{{vehicule.add}}">
           </div>
@@ -54,7 +63,7 @@
           </div>
           <button class="btn btn-default" (click)="onBack()">Retour</button>
           <button  class="btn btn-success" style="float: right;" 
-                  type="submit">
+                  type="submit" [disabled]="vehiculeForm.invalid || fileIsUploading">
             Enregistrer
           </button>
         </form>

@@ -1,39 +1,42 @@
-<div id="principale">
-    <div class=DivGauche>
-     Véhicule
+ 
+ <div id="principale" >
   
-    </div>
-    <div class="DivCentrale">
-      <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
-      <br>
-      <div class="row">
-        <ul>
-          <li *ngFor="let photo of vehicule.photos let x = index">
-            <img style="max-width:200px;" *ngIf="photo.photoA" alt="Photo introuvable" [src]="photo.photoA">
-            <img style="max-width:200px;" *ngIf="photo.photoB" alt="Photo introuvable" [src]="photo.photoB">
-            <img style="max-width:200px;" *ngIf="photo.photoC" alt="Photo introuvable" [src]="photo.photoC">              
-          </li>
-        </ul>
-        <div class="col-xs-12">
-          <h1>ID : {{ vehicule.identifiant }}</h1>
-          <h3>Modèle : {{ vehicule.modele }}</h3>
-          <h3> Agence : {{ vehicule.agence }}</h3>
-          <h3><p>Date de fabrication : {{ vehicule.dateFab }}</p></h3>0  
-          <h3>Puissance : {{ vehicule.puissance }}</h3>
-          <h3>Largeur : {{ vehicule.largeur }}</h3>
-          <h3>Hauteur : {{ vehicule.hauteur }}</h3>
-          <h3>Statut : {{ vehicule.statut }}</h3>
-          <h3><span *ngIf="!enPret">Prêt :  Véhicule disponible</span></h3>
-          <h3> <span *ngIf="enPret">Prêt : Véhicule en prêt</span></h3>
-          <button class="btn btn-success" style="float: right;" (click)="onEditVehicule(id)">Modifier Véhicule</button>
-          <button class="btn btn-default" (click)="onBack()">Retour</button>
-        </div>
-      </div>
-  
-  
-    </div>
-    <div style="min-width: 25%;">
+  <div class=DivGauche >
+    <p>Détail du véhicule</p>
 
-      
+  </div>
+  <div class="DivCentrale" style="max-width: 30%;">
+    <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
+    <br>
+    <div class="row">
+      <ul>
+        <li *ngFor="let photo of vehicule.photos let x = index">
+          <img style="max-width:200px;" *ngIf="photo.photoA" alt="Photo introuvable" [src]="photo.photoA">
+          <img style="max-width:200px;" *ngIf="photo.photoB" alt="Photo introuvable" [src]="photo.photoB">
+          <img style="max-width:200px;" *ngIf="photo.photoC" alt="Photo introuvable" [src]="photo.photoC">
+        </li>
+      </ul>
+
     </div>
   </div>
+  <div class="DivDroite" style="max-width: 50%;"  >
+    
+    
+   
+      <h3>ID : {{ vehicule.identifiant }}</h3>
+      <h3>Modèle : {{ vehicule.modele }}</h3>
+      <h3> Agence : {{ vehicule.agence }}</h3>
+      <h3>
+        <p>Date de fabrication : {{ vehicule.dateFab }}</p>
+      </h3>
+      <h3>Puissance : {{ vehicule.puissance }}</h3>
+      <h3>Largeur : {{ vehicule.largeur }}</h3>
+      <h3>Hauteur : {{ vehicule.hauteur }}</h3>
+      <h3>Statut : {{ vehicule.statut }}</h3>
+      <h3><span *ngIf="!enPret">Prêt : Véhicule disponible</span></h3>
+      <h3> <span *ngIf="enPret">Prêt : Véhicule en prêt</span></h3>
+      <button class="btn btn-success" style="float: right;" (click)="onEditVehicule(id)">Modifier Véhicule</button>
+      <button class="btn btn-default" (click)="onBack()">Retour</button>
+
+  </div>
+</div>
