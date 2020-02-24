@@ -20,8 +20,8 @@
         <td style=" border:solid 1px black">{{ vehicule.dateFab }}</td>
         <td style=" border:solid 1px black">{{ vehicule.dateDelete | date:'EEEE d MMMM y' }}</td>
         <td style=" border:solid 1px black">{{ vehicule.AgentDelete }}</td>
-        <td style=" border:solid 1px black"> {{ vehicule.vehiculeDeleted   }} </td>
-    
+        <td style=" border:solid 1px black"> <img style="max-width: 50px;"  [hidden]="!vehicule.vehiculeDeleted " src="assets/img/supprime.jpg" alt="suppression" ></td>
+  
       </tr>
     </table>
   </div>
