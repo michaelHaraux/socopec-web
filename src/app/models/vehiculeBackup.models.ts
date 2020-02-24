@@ -12,6 +12,8 @@ export class vehiculeBackup {
     recupAdd:boolean;
     dateDelete : string;
     AgentDelete : string;
+    vehiculeDeleted : boolean;
+    
     
     constructor(public identifiant: string, public modele: string) {
     }

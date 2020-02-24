@@ -75,6 +75,7 @@ export class VehiculeFormComponent implements OnInit {
       newVehicule.photo = this.fileUrl;
     }
     this.listeFilesUrl=[];
+    
     this.vehiculesService.createNewVehicule(newVehicule);
     this.router.navigate(['/vehicules']);
   }

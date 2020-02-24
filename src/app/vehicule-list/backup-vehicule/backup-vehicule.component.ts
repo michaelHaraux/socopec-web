@@ -4,6 +4,7 @@ import { Vehicule } from '../../models/vehicule.model';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { vehiculeBackup } from '../../models/vehiculeBackup.models';
+import { FilterPipe } from 'ngx-filter-pipe';
 import * as XLSX from 'xlsx'; 
 
 @Component({
@@ -13,10 +14,12 @@ import * as XLSX from 'xlsx';
 })
 export class BackupVehiculeComponent implements OnInit, OnDestroy {
 
+  userFilter: any = { identifiant: '' };
   vehiculesBackup: vehiculeBackup[];
   vehiculesSubscription: Subscription;
   
-  constructor(private vehiculesService: VehiculesService, private router: Router) {}
+  
+  constructor(private filterPipe: FilterPipe,private vehiculesService: VehiculesService, private router: Router) {}
 
   ngOnInit() {
     this.vehiculesSubscription = this.vehiculesService.vehiculesBackupSubject.subscribe(
@@ -27,6 +30,8 @@ export class BackupVehiculeComponent implements OnInit, OnDestroy {
     );
     this.vehiculesService.emitVehiculesBackup();
   }
+  
+
   @ViewChild('TABLE', { static: false }) TABLE: ElementRef;  
   title = 'Excel';  
   ExportTOExcel() {  

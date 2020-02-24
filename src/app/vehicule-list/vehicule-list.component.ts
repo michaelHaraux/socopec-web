@@ -66,6 +66,7 @@ export class VehiculeListComponent implements OnInit, OnDestroy {
 
     vehiculeBackup.dateDelete = this.dateString;
     vehiculeBackup.AgentDelete = this.utilisateur;
+    vehiculeBackup.vehiculeDeleted = true;
     console.log("agent", vehiculeBackup.AgentDelete);
     console.log("date", vehiculeBackup.dateDelete);
 

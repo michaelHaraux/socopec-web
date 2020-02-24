@@ -10,6 +10,7 @@ export class Vehicule {
     puissance : number;
     agence : string;
     add:boolean;
+    
 
     photos = [
       {

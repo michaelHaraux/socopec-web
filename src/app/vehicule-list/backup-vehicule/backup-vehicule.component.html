@@ -1,16 +1,18 @@
+<div><input type="text"  [(ngModel)]="userFilter.identifiant" placeholder="Filtrer par identifant"></div>
 <div>
-    <table style=" border:solid 1px black; margin: 10px; overflow: auto;" #TABLE #table>
+     <table #TABLE #table  style=" border:solid 1px black; margin: 10px; overflow: auto;"  class="z-depth-1"  >
       <thead style="background-color:#D3E5E5" >
         <tr >
-          <th scope="col" style=" border:solid 1px black">Identifiant</th>
+          <th scope="col" style=" border:solid 1px black"  [mdbTableSort]="vehiculesBackup" sortBy="identifiant"><mdb-icon fas icon="sort"></mdb-icon>>Identifiant</th>
           <th scope="col" style=" border:solid 1px black">Modèle</th>
           <th scope="col" style=" border:solid 1px black">Agence</th>
-          <th scope="col" style=" border:solid 1px black">Date de fabrication</th>
-          <th scope="col" style=" border:solid 1px black"> Date de suppression</th>
-          <th scope="col" style=" border:solid 1px black"> Supprimé par ... </th>
+          <th scope="col" style=" border:solid 1px black">Date de modificatin</th>
+          <th scope="col" style=" border:solid 1px black"> Date de MAJ</th>
+          <th scope="col" style=" border:solid 1px black"> MAJ par  </th>
+          <th scope="col" style=" border:solid 1px black"> Supprimé </th>
         </tr>
       </thead>
-      <tr  *ngFor="let vehicule of vehiculesBackup ; let i = index" style=" border:solid 1px black">
+      <tr  *ngFor="let vehicule of vehiculesBackup | filterBy: userFilter; let i = index" style=" border:solid 1px black">
     
         <td style=" border:solid 1px black">{{ vehicule.identifiant }}</td>
         <td style=" border:solid 1px black">{{ vehicule.modele }}</td>
@@ -18,7 +20,8 @@
         <td style=" border:solid 1px black">{{ vehicule.dateFab }}</td>
         <td style=" border:solid 1px black">{{ vehicule.dateDelete | date:'EEEE d MMMM y' }}</td>
         <td style=" border:solid 1px black">{{ vehicule.AgentDelete }}</td>
-
+        <td style=" border:solid 1px black"> {{ vehicule.vehiculeDeleted   }} </td>
+    
       </tr>
     </table>
   </div>

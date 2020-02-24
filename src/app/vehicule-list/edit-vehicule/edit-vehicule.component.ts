@@ -3,6 +3,9 @@ import { Vehicule } from '../../models/vehicule.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VehiculesService } from '../../services/vehicule.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { vehiculeBackup } from '../../models/vehiculeBackup.models';
+import { AuthService } from '../../services/auth.service';
+import * as firebase from 'firebase';
 import * as cloneDeep from 'lodash/cloneDeep';
 
 @Component({
@@ -23,13 +26,28 @@ export class EditVehiculeComponent implements OnInit {
   idEdit : number;
   pret : boolean;
   add: boolean;
+  isAdmin: boolean;
+  isAuth: boolean;
+  utilisateur: string
   
   constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private vehiculesService: VehiculesService,
     private router: Router) { }
     
   ngOnInit() {
 
-
+    firebase.auth().onAuthStateChanged(
+      (user) => {
+        if (user) {
+          this.isAuth = true;
+          this.utilisateur=user.email
+          if(this.utilisateur=="admin@gmail.com"){
+            this.isAdmin = true;
+          }else{this.isAdmin=false}
+        } else {
+          this.isAuth = false;
+        }
+      }
+    );
     this.initForm();
   }
 
@@ -82,13 +100,15 @@ export class EditVehiculeComponent implements OnInit {
     //if(confirm("Etes vous sur de vouloir supprimer ce véhicule")) 
       console.log("Implement delete functionality here");
      // console.log(vehicule);
+    
       this.vehiculesService.removeVehicule(vehicule);
   }
 
   toggleVisibility(e){
     this.add= e.target.checked;
   }
-
+  date = new Date();
+  dateString = this.date.toDateString();
   onSaveVehicule() {
 
 
@@ -129,6 +149,19 @@ export class EditVehiculeComponent implements OnInit {
       newVehicule.photo = this.fileUrl;
     }
     this.listeFilesUrl=[];
+    
+
+    const EditVehicule = new vehiculeBackup(identifiant, modele);
+    EditVehicule.dateFab = dateFab;
+    EditVehicule.hauteur = hauteur;
+    EditVehicule.largeur = largeur;
+    EditVehicule.poids = poids;
+    EditVehicule.puissance = puissance;
+    EditVehicule.photo = photo;
+    EditVehicule.agence = agence;
+    EditVehicule.dateDelete = this.dateString;
+    EditVehicule.AgentDelete = this.utilisateur;
+    this.vehiculesService.backupVehicule(EditVehicule);
     this.vehiculesService.removeVehiculeEdit(this.idEdit); 
     this.vehiculesService.createNewVehicule(newVehicule);
   
