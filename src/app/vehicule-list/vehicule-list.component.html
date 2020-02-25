@@ -29,6 +29,7 @@
               <th scope="col" style=" border:solid 1px black" >Statut</th>
               <th scope="col" style=" border:solid 1px black"[mdbTableSort]="vehicules" sortBy="dateFab"><mdb-icon fas icon="sort"></mdb-icon>Date de fabrication</th>
               <th scope="col" style=" border:solid 1px black"> Détails</th>
+              <th scope="col" style=" border:solid 1px black"> Signalement</th>
               <th scope="col" style=" border:solid 1px black"> Suppression</th>
             </tr>
           </thead>
@@ -43,9 +44,10 @@
             <td style=" border:solid 1px black">{{ vehicule.dateFab }}</td>
    
             <td style="max-width: 50px;">
-              <button (click)="onViewVehicule(i)" style="max-width: 90%;" ><img style="max-width: 20px;"  src="https://c7.uihere.com/files/496/449/244/computer-icons-search-button.jpg" alt="suppression" ></button>
-
-                  
+              <button (click)="onViewVehicule(i)" style="max-width: 90%;" ><img style="max-width: 20px;"  src="https://c7.uihere.com/files/496/449/244/computer-icons-search-button.jpg" alt="suppression" ></button> 
+            </td>
+            <td style="max-width: 50px;">
+              <button (click)="onSignalementVehicule(i)" style="max-width: 90%;"> <img style="max-width: 20px;"  src="https://lh3.googleusercontent.com/proxy/nemssKxzUe8HEjiAESVnyo46IarDobx2oRtxWdesL3Mt33YBkx83nLXucWFHj66zeGuIji6XOA_7q-OFmsRmguQCVLgMFpaT8ZI1Iqmu-neL-pAw_MB9hoY" alt="Signalement"></button>    
             </td>
             <td style="max-width: 50px;">
               <button (click)="onDeleteVehicule(vehicule, vehicule)" style="max-width: 90%;" ><img style="max-width: 20px;" src="assets/img/deleteVehicule.png" alt="suppression" ></button>    

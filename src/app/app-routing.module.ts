@@ -18,7 +18,7 @@ import {EditVehiculeComponent} from './vehicule-list/edit-vehicule/edit-vehicule
 import {EditAgenceComponent} from './agence-list/edit-agence/edit-agence.component';
 import {EditAgentComponent} from './agent-list/edit-agent/edit-agent.component';
 import {BackupVehiculeComponent} from './vehicule-list/backup-vehicule/backup-vehicule.component';
-
+import {SignalerVehiculeComponent} from './vehicule-list/signaler-vehicule/signaler-vehicule.component';
 
   const appRoutes: Routes = [
     { path: 'auth/signup', component: SignupComponent },
@@ -34,7 +34,7 @@ import {BackupVehiculeComponent} from './vehicule-list/backup-vehicule/backup-ve
     { path: 'vehicules/new', canActivate: [AuthGuardService], component: VehiculeFormComponent },
     { path: 'vehicules/edit/:id', canActivate: [AuthGuardService], component: EditVehiculeComponent },
     { path: 'vehicules/view/:id', canActivate: [AuthGuardService], component: SingleVehiculeComponent },
-
+    { path: 'vehicules/signalement/:id', canActivate: [AuthGuardService], component: SignalerVehiculeComponent },
     { path: 'agences', canActivate: [AuthGuardService], component: AgenceListComponent },
     { path: 'accueil/agences', canActivate: [AuthGuardService], component: AgenceListComponent },
     { path: 'agences/new', canActivate: [AuthGuardService], component: AgenceFormComponent },

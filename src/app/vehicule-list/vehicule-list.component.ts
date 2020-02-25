@@ -56,7 +56,10 @@ export class VehiculeListComponent implements OnInit, OnDestroy {
   onNewVehicule() {
     this.router.navigate(['/vehicules', 'new']);
   }
-
+  
+  onSignalementVehicule(id:number) {
+    this.router.navigate(['/vehicules', 'signalement',id]);
+  }
   date = new Date();
   dateString = this.date.toDateString();
 

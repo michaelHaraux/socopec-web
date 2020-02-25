@@ -1,0 +1,54 @@
+<h1>Signalement d'un problème sur le véhicule : {{vehicule.identifiant}}</h1>
+<h3>Modèle : {{vehicule.modele}}</h3>
+<br><br>
+
+<div class="DivCentrale">
+  
+    <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
+    <div id="form">
+        <div class="form-group">
+          <label for="nature">Nature du problème :  </label>
+          <input #nature type="text" id="nature" class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label for="niveau">Niveau : </label>
+            <select #niveau  name="niveau" id="niveau">
+                <option value="Très grave">Très grave</option>
+                <option value="Grave">Grave</option>
+                <option value="Léger">Léger</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description détaillée : </label>
+          <textarea #description name="" id="description" cols="160" rows="4"></textarea>
+        </div>
+
+        <button 
+          mdbBtn color="info" block="true" class="my-4"
+          (click)="addSignalement(nature.value,niveau.value,description.value)">Signaler au SAV
+        </button>
+        <p>{{inputControl}}</p>
+
+    </div>
+  </div>
+<h2>Véhicules signalés</h2>
+<div><input type="text"  [(ngModel)]="userFilter.identifiant" placeholder="Filtrer par identifant" value="{{vehicule.identifiant}}"></div>
+  <table style=" border:solid 1px black; margin: 10px; overflow: auto;"  mdbTable class="z-depth-1">
+    <thead style="background-color:#D3E5E5" >
+      <tr >
+        <th scope="col" style=" border:solid 1px black" [mdbTableSort]="signalements" sortBy="identifiant"><mdb-icon fas icon="sort"></mdb-icon>Identifiant</th>
+        <th scope="col" style=" border:solid 1px black">Nature</th>
+        <th scope="col" style=" border:solid 1px black">Niveau</th>
+        <th scope="col" style=" border:solid 1px black">Description</th>
+      </tr>
+    </thead>
+    <tr  *ngFor="let signalement of signalements | filterBy: userFilter; let i = index" style=" border:solid 1px black">
+  
+      <td style=" border:solid 1px black">{{ signalement.identifiant }}</td>
+      <td style=" border:solid 1px black">{{ signalement.nature }}</td>
+      <td style=" border:solid 1px black">{{ signalement.niveau }}</td>
+      <td style=" border:solid 1px black">{{ signalement.description }}</td>
+    </tr>
+  </table>
