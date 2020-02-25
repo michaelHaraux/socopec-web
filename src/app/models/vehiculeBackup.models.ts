@@ -13,7 +13,7 @@ export class vehiculeBackup {
     dateDelete : string;
     AgentDelete : string;
     vehiculeDeleted : boolean;
-    
+    vehiculeCreated : boolean;
     
     constructor(public identifiant: string, public modele: string) {
     }

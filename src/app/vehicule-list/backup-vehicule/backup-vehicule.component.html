@@ -1,6 +1,7 @@
+
 <div><input type="text"  [(ngModel)]="userFilter.identifiant" placeholder="Filtrer par identifant"></div>
-<div>
-     <table #TABLE #table  style=" border:solid 1px black; margin: 10px; overflow: auto;"  class="z-depth-1"  >
+<div mdbTable>
+     <table #TABLE #table  style=" border:solid 1px black; margin: 10px; overflow: auto;"    class="z-depth-1"  >
       <thead style="background-color:#D3E5E5" >
         <tr >
           <th scope="col" style=" border:solid 1px black"  [mdbTableSort]="vehiculesBackup" sortBy="identifiant"><mdb-icon fas icon="sort"></mdb-icon>>Identifiant</th>
@@ -9,10 +10,10 @@
           <th scope="col" style=" border:solid 1px black">Date de modificatin</th>
           <th scope="col" style=" border:solid 1px black"> Date de MAJ</th>
           <th scope="col" style=" border:solid 1px black"> MAJ par  </th>
-          <th scope="col" style=" border:solid 1px black"> Supprimé </th>
+          <th scope="col" style=" border:solid 1px black"> Action </th>
         </tr>
       </thead>
-      <tr  *ngFor="let vehicule of vehiculesBackup | filterBy: userFilter; let i = index" style=" border:solid 1px black">
+      <tr  *ngFor="let vehicule of vehiculesBackup | filterBy: userFilter; let i = index"  style=" border:solid 1px black">
     
         <td style=" border:solid 1px black">{{ vehicule.identifiant }}</td>
         <td style=" border:solid 1px black">{{ vehicule.modele }}</td>
@@ -20,9 +21,13 @@
         <td style=" border:solid 1px black">{{ vehicule.dateFab }}</td>
         <td style=" border:solid 1px black">{{ vehicule.dateDelete | date:'EEEE d MMMM y' }}</td>
         <td style=" border:solid 1px black">{{ vehicule.AgentDelete }}</td>
-        <td style=" border:solid 1px black"> <img style="max-width: 50px;"  [hidden]="!vehicule.vehiculeDeleted " src="assets/img/supprime.jpg" alt="suppression" ></td>
-  
-      </tr>
+        <td style=" border:solid 1px black; text-align: center;" > 
+            <span [hidden]="!vehicule.vehiculeCreated " style="color :green;"> CREATION</span>
+            <span [hidden]="!vehicule.vehiculeDeleted "  style="color: red;"> SUPPRESSION</span>
+            <span [hidden]="vehicule.vehiculeDeleted || vehicule.vehiculeCreated "  style="color: blue ;"> MODIFICATION</span>
+          </td>
+        
+      </tr> 
     </table>
   </div>
   <button class="btn btn-default" (click)="onBack()">Retour</button>

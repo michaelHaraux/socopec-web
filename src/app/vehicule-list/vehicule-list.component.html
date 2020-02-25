@@ -8,22 +8,9 @@
       <img src="../assets/img/doubleBarre.png" class=img-responsive alt="Bienvenue">
       <div class="list-group">
       </div>
-      <!-- <h2>Trier par :</h2> -->
+   
       <div id="selectTri">
-        <!-- <div>
-          <label class="radio-inline">
-            <input type="radio" name="optradio" value="modele" (click)="trierPar('modele')" checked>Modèle
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="optradio" value="agence" (click)="trierPar('agence')">Agence
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="optradio" value="statut" (click)="trierPar('statut')">Statut
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="optradio" value="datefab" (click)="trierPar('datefab')">Date de fabrication
-          </label>
-        </div> -->
+    
         <div><input type="text"  [(ngModel)]="userFilter.identifiant" placeholder="Filtrer par identifant"></div>
         <div><input type="text"  [(ngModel)]="userFilter.modele" placeholder="Filtrer par modèle"></div>
         <div><input type="text"  [(ngModel)]="userFilter.agence" placeholder="Filtrer par agence"></div>

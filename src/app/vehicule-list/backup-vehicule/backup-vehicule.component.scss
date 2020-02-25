@@ -1,0 +1,12 @@
+td{
+    background-color: #FCF5F5   ;
+}
+.scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+  
+    .card {
+      display: inline-block;
+    }
+  }

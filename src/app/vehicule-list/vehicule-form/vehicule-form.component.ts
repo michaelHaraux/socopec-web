@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Vehicule } from '../../models/vehicule.model';
 import { VehiculesService } from '../../services/vehicule.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { vehiculeBackup } from '../../models/vehiculeBackup.models';
 
 import * as firebase from 'firebase';
 import { Agence } from 'src/app/models/agence.model';
@@ -22,6 +23,10 @@ export class VehiculeFormComponent implements OnInit {
   listeFilesUrl: string[] = [];
   fileUploaded = false;
   add = false;
+  isAdmin: boolean;
+  isAuth: boolean;
+  utilisateur: string
+  vehiculeCreated : boolean;
   
 
   constructor(private route: ActivatedRoute,private formBuilder: FormBuilder, private vehiculesService: VehiculesService,
@@ -29,6 +34,19 @@ export class VehiculeFormComponent implements OnInit {
               
   ngOnInit() {
     this.initForm();
+    firebase.auth().onAuthStateChanged(
+      (user) => {
+        if (user) {
+          this.isAuth = true;
+          this.utilisateur=user.email
+          if(this.utilisateur=="admin@gmail.com"){
+            this.isAdmin = true;
+          }else{this.isAdmin=false}
+        } else {
+          this.isAuth = false;
+        }
+      }
+    );
   }
 
   initForm() {
@@ -44,6 +62,9 @@ export class VehiculeFormComponent implements OnInit {
       add:'',
     });
   }
+  
+  date = new Date();
+  dateString = this.date.toDateString();
   
   onSaveVehicule() {
     const identifiant = this.vehiculeForm.get('identifiant').value;
@@ -75,7 +96,21 @@ export class VehiculeFormComponent implements OnInit {
       newVehicule.photo = this.fileUrl;
     }
     this.listeFilesUrl=[];
+
+    const createVehicule = new vehiculeBackup(identifiant, modele);
+    createVehicule.dateFab = dateFab;
+    createVehicule.hauteur = hauteur;
+    createVehicule.largeur = largeur;
+    createVehicule.poids = poids;
+    createVehicule.puissance = puissance;
+    createVehicule.dateFab = dateFab;
+    createVehicule.agence = agence;
+    createVehicule.add = this.add;
+    createVehicule.dateDelete = this.dateString;
+    createVehicule.AgentDelete = this.utilisateur;
+    createVehicule.vehiculeCreated = true;
     
+    this.vehiculesService.backupVehicule(createVehicule);
     this.vehiculesService.createNewVehicule(newVehicule);
     this.router.navigate(['/vehicules']);
   }
