@@ -25,16 +25,16 @@
           <textarea #description name="" id="description" cols="160" rows="4"></textarea>
         </div>
 
-        <button 
-          mdbBtn color="info" block="true" class="my-4"
-          (click)="addSignalement(nature.value,niveau.value,description.value)">Signaler au SAV
-        </button>
+        <button class="btn btn-default" (click)="onBack()">Retour</button>
+        <button class="btn btn-success" style="float: right;" (click)="addSignalement(nature.value,niveau.value,description.value)">Signaler au SAV</button>
+       
         <p>{{inputControl}}</p>
 
     </div>
   </div>
 <h2>Véhicules signalés</h2>
-<div><input type="text"  [(ngModel)]="userFilter.identifiant" placeholder="Filtrer par identifant" value="{{vehicule.identifiant}}"></div>
+<!-- <div><input type="text"  [(ngModel)]="userFilter.identifiant" placeholder="Filtrer par identifant" value="{{vehicule.identifiant}}"></div> -->
+<div><input type="text"  [(ngModel)]="userFilter.identifiant" placeholder="Filtrer par identifant" ></div>
   <table style=" border:solid 1px black; margin: 10px; overflow: auto;"  mdbTable class="z-depth-1">
     <thead style="background-color:#D3E5E5" >
       <tr >
