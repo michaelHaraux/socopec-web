@@ -137,5 +137,8 @@
       }
     }
   },
-  "defaultProject": "SOCOPEC"
+  "defaultProject": "SOCOPEC",
+  "cli": {
+    "analytics": false
+  }
 }
