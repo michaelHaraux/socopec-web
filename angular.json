@@ -40,7 +40,7 @@
             ],
             "scripts": [
           
-              "../socopec-web/node_modules/hammerjs/hammer.min.js"
+             
             ]
           },
           "configurations": {
